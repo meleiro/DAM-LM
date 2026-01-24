@@ -1,0 +1,347 @@
+/* =========================================================
+   VARIABLES CSS (Custom Properties) en :root
+   =========================================================
+   :root representa el elemento raíz del documento (html).
+   Definir variables aquí hace que estén disponibles en toda
+   la página (scope global), facilitando mantener y cambiar
+   el diseño (colores, sombras, radios, etc.).
+*/
+:root{
+    /* Color de fondo general de la página */
+    --bg: #f5f6f7;
+
+    /* Color típico de “tarjeta” / contenedor blanco */
+    --card: #fff;
+
+    /* Color principal del texto (oscuro, para buena legibilidad) */
+    --text: #1f2233;
+
+    /* Color de texto secundario / menos importante */
+    --muted: #6b6b6b;
+
+    /* Color de acento (botones, highlights, etc.) */
+    --accent: #33c26b;
+
+    /* Sombra reutilizable: x y blur + color con transparencia */
+    --shadow: 0 8px 16px rgba(0,0,0,.10);
+
+    /* Radio base para esquinas redondeadas */
+    --r:16px;
+}
+
+/* =========================================================
+   RESET / NORMALIZACIÓN BÁSICA
+   =========================================================
+   box-sizing: border-box:
+   - Hace que el padding y el borde cuenten dentro del ancho/alto.
+   - Evita “sorpresas” al calcular tamaños.
+   - Muy recomendable para layouts.
+*/
+* {
+   box-sizing: border-box; 
+}
+
+/* =========================================================
+   ESTILOS GENERALES DEL BODY
+   ========================================================= */
+body {
+    /* El body por defecto tiene margen (8px normalmente).
+       Lo quitamos para que el layout arranque pegado al borde. */
+    margin:0;
+
+    /* Fuente base */
+    font-family: Arial;
+
+    /* Usamos la variable de fondo definida en :root */
+    background-color: var(--bg);
+
+    /* Color base de texto usando variable */
+    color:var(--text);
+
+    /* Interlineado: 1.20 = 120% del tamaño de fuente */
+    line-height: 1.20;
+}
+
+/* =========================================================
+   IMÁGENES RESPONSIVAS
+   =========================================================
+   max-width: 100%:
+   - Evita que una imagen se salga de su contenedor.
+   display: block:
+   - Quita el espacio “extra” que aparece por ser inline (baseline).
+*/
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL DEL LAYOUT (GRID)
+   ========================================================= */
+.layout {
+    /* min-height: 100vh
+       vh = viewport height (altura visible de la ventana).
+       100vh = ocupar como mínimo toda la altura de pantalla.
+       Así el layout no queda “enano” si hay poco contenido. */
+    min-height: 100vh;
+
+    /* Ancho máximo para que en pantallas grandes no se estire infinito */
+    max-width: 1200px;
+
+    /* Centrado horizontal:
+       margin-left/right auto reparte el espacio sobrante igual */
+    margin: 0 auto;
+
+    /* Separación interna del borde del contenedor */
+    padding: 16px;
+
+    /* Activamos CSS Grid para organizar zonas */
+    display:grid;
+
+    /* gap = separación entre filas/columnas del grid */
+    gap: 16px;
+
+    /* Definimos 2 columnas:
+       - 2fr para contenido principal (más ancho)
+       - 1fr para el aside (más estrecho)
+       fr = “fracción” del espacio disponible
+       2fr + 1fr => 2/3 y 1/3 aprox */
+    grid-template-columns:2fr 1fr;
+
+    /* Definimos “mapa” de áreas del grid
+       Cada string es una fila.
+       Cada palabra es el nombre del área en cada columna.
+       - header ocupa las dos columnas
+       - nav ocupa las dos columnas
+       - main ocupa la primera columna, aside la segunda
+       - footer ocupa las dos columnas */
+    grid-template-areas: 
+    "header header" 
+    "nav     nav" 
+    "main  aside" 
+    "footer footer";
+    
+    /* Este punto y coma extra no rompe, pero es innecesario: */
+    ;
+}
+
+/* =========================================================
+   ASIGNACIÓN DE CADA SECCIÓN A SU ÁREA (grid-area)
+   =========================================================
+   Cada clase se “coloca” en el área definida arriba.
+*/
+.site-header{ grid-area: header; }
+.site-nav{ grid-area: nav; }
+
+/* MAIN:
+   - Se coloca en el área "main"
+   - Además se convierte en grid para ordenar sus hijos (cards, etc.)
+*/
+.site-main {
+    grid-area: main;
+
+    /* Sub-grid: organizas el contenido interno del main */
+    display: grid;
+
+    /* Separación entre elementos dentro del main */
+    gap: 16px;
+}
+
+/* ASIDE: va al área "aside" */
+.site-aside{
+    grid-area: aside; 
+}
+
+/* FOOTER: va al área "footer" */
+.site-footer{
+    grid-area: footer; 
+}
+
+/* =========================================================
+   COMPONENTE TARJETA (CARD)
+   ========================================================= */
+.card {
+    /* Fondo blanco (variable) */
+    background: var(--card);
+
+    /* Esquinas redondeadas (variable) */
+    border-radius: var(--r);
+
+    /* Sombra (variable) para efecto elevación */
+    box-shadow: var(--shadow);
+
+    /* overflow:hidden:
+       Recorta lo que sobresale (por ejemplo, imagen con bordes).
+       También hace que el borde redondeado afecte al contenido interno. */
+    overflow:hidden;
+}
+
+/* Imagen dentro de la card */
+.card img {
+    /* Ocupa todo el ancho de la tarjeta */
+    width: 100%;
+
+    /* Alto fijo: todas las cards quedan visualmente uniformes */
+    height: 150px;
+
+    /* object-fit: cover:
+       La imagen se recorta manteniendo proporción para rellenar el área.
+       Muy útil para “miniaturas” consistentes. */
+    object-fit:cover;
+}
+
+/* Cuerpo de la card */
+.card__body{
+    /* Padding interior para separar texto del borde */
+    padding: 12px
+}
+
+/* Título dentro del body:
+   margin personalizado para controlar espacios */
+.card__body h3{
+    margin:0 0 6px 0
+}
+
+/* Párrafo dentro del body:
+   - margin inferior para separar elementos
+   - color muted para texto secundario */
+.card__body p{
+    margin:0 0 8px 0;
+    color: var(--muted)
+}
+
+/* Precio destacado en negrita */
+.card__body .price{
+    font-weight: 700;
+}
+
+/* =========================================================
+   GALERÍA DE IMÁGENES (GRID RESPONSIVE)
+   ========================================================= */
+.gallery{
+    display: grid;
+
+    /* Espacio entre miniaturas */
+    gap: 10px;
+
+    /* Separación superior respecto a lo anterior */
+    margin-top: 12px;
+
+    /* grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+       - auto-fill: crea tantas columnas como quepan.
+       - minmax(160px, 1fr): cada columna mide mínimo 160px,
+         y si sobra espacio se expande (1fr).
+       Resultado: galería fluida que se adapta al ancho. */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+/* Estilo de cada imagen en la galería */
+.gallery img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+
+    /* Esquinas redondeadas y sombra como “mini-cards” */
+    border-radius: var(--r);
+    box-shadow: var(--shadow);
+}
+
+/* =========================================================
+   ASIDE COMO GRID INTERNO
+   =========================================================
+   OJO: .site-aside está definido 2 veces en tu CSS.
+   No es un error grave: se combinan propiedades.
+   Aquí le das un layout interno en forma de grid.
+*/
+.site-aside {
+    display:grid;
+
+    /* Separación entre cajas del aside */
+    gap: 12px;
+
+    /* align-content: start:
+       Si el aside tiene más altura libre, el contenido se queda arriba,
+       no se reparte ni se centra. */
+    align-content: start;
+}
+
+/* Caja del aside (similar a card) */
+.aside-box {
+    background-color: var(--card);
+    border-radius: var(--r);
+    box-shadow: var(--shadow);
+
+    /* Padding interior */
+    padding:12px;
+}
+
+/* Título del aside-box:
+   font-weight 900 = muy negrita (depende de la fuente disponible) */
+.aside-box h3 {
+    font-weight: 900;
+    margin: 0 0 6px 0
+}
+
+/* Texto del aside-box */
+.aside-box p {
+    margin: 0;
+    color:var(--muted)
+}
+
+/* =========================================================
+   FORMULARIO (GRID)
+   ========================================================= */
+.form{
+    margin-top: 12px;
+
+    /* Grid para alinear campos uno debajo de otro con gap */
+    display: grid;
+
+    gap: 12px;
+
+    /* Limita el ancho para que el formulario no quede demasiado ancho */
+    max-width: 500px;
+}
+
+/* Cada label contiene su texto + input/textarea.
+   display:grid permite separar (con gap) el texto del campo. */
+.form label{
+    display: grid;
+    gap: 6px;
+
+    /* Negrita para el texto del label */
+    font-weight: 700;
+}
+
+/* Inputs y textarea */
+.form input, .form textarea{
+    width: 100%;
+
+    /* Espacio interno cómodo */
+    padding: 10px;
+
+    /* Bordes redondeados suaves (aquí NO usas --r para que sea más sutil) */
+    border-radius: 6px;
+
+    /* Borde gris semitransparente */
+    border: 1px solid rgba(0, 0, 0 , 0.3);
+}
+
+/* =========================================================
+   FOOTER
+   =========================================================
+   También está definido antes con grid-area.
+   Aquí le das apariencia visual.
+*/
+.site-footer{
+  grid-area: footer;
+  background-color: #1f2233;
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+

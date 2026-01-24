@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo CSS: cajas y responsive</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>On fire con CSS</h1>
+    <img src="logo.jpg" width="300" class="logo-img">
+    <p>Ejemplo para practicar box model, display, position, responsive y variables CSS.</p>
+  </header>
+
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#box-model">Modelo de Caja</a></li>
+      <li><a href="#display">Display</a></li>
+      <li><a href="#position">Position</a></li>
+      <li><a href="#responsive">Responsive</a></li>
+      <li><a href="#variables">Variables CSS</a></li>
+    </ul>
+  </nav>
+
+  <main class="page">
+    <!-- MODELO DE CAJA -->
+    <section id="box-model" class="section">
+      <h2>Modelo de Caja</h2>
+      <p>Recuerda: margen → borde → relleno (padding) → contenido.</p>
+
+      <div class="demo-box">
+        <span class="badge">Caja</span>
+        Contenido de la caja. Aquí podemos ver el padding, el borde y el margen
+        si miramos con las herramientas del navegador.
+      </div>
+    </section>
+
+    <!-- DISPLAY -->
+    <section id="display" class="section">
+      <h2>Display</h2>
+      <p>Comparación de <strong>inline</strong>, <strong>block</strong> e <strong>inline-block</strong>.</p>
+
+      <div class="display-row">
+        <span class="demo-inline">Inline 1</span>
+        <span class="demo-inline">Inline 2</span>
+        <span class="demo-inline">Inline 3</span>
+      </div>
+
+      <div class="display-row">
+        <div class="demo-block">Block 1</div>
+        <div class="demo-block">Block 2</div>
+      </div>
+
+      <div class="display-row">
+        <button class="demo-inline-block">Inline-block 1</button>
+        <button class="demo-inline-block">Inline-block 2</button>
+        <button class="demo-inline-block">Inline-block 3</button>
+      </div>
+    </section>
+
+    <!-- POSITION -->
+    <section id="position" class="section">
+      <h2>Position</h2>
+      <p>Ejemplo de <code>static</code>, <code>relative</code>, <code>absolute</code> y <code>fixed</code>.</p>
+
+      <div class="position-container">
+        <div class="pos-box pos-static">static</div>
+        <div class="pos-box pos-relative">relative</div>
+        <div class="pos-box pos-absolute">absolute</div>
+      </div>
+
+      <p class="position-text">
+        Además, hay un botón fijo abajo a la derecha de la pantalla con
+        <code>position: fixed</code>.
+      </p>
+    </section>
+
+    <!-- RESPONSIVE -->
+    <section id="responsive" class="section">
+      <h2>Responsive Design</h2>
+      <p><strong>Mobile-first</strong>: esta página está pensada primero para móvil.</p>
+      <p>Con una media query cambiamos el diseño cuando el ancho es mayor o igual a 768px.</p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Caja 1</h3>
+          <p>Un bloque de contenido que en móvil ocupa todo el ancho.</p>
+        </article>
+        <article class="card">
+          <h3>Caja 2</h3>
+          <p>En pantallas grandes las tarjetas se colocan una al lado de la otra.</p>
+        </article>
+        <article class="card">
+          <h3>Caja 3</h3>
+          <p>Ejemplo sencillo de diseño responsive.</p>
+        </article>
+          <article class="card">
+          <h3>Caja 4</h3>
+          <p>En pantallas grandes las tarjetas se colocan una al lado de la otra.</p>
+        </article>
+          <article class="card">
+          <h3>Caja 5</h3>
+          <p>En pantallas grandes las tarjetas se colocan una al lado de la otra.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- VARIABLES CSS -->
+    <section id="variables" class="section">
+      <h2>Variables CSS</h2>
+      <p>Esta página usa variables para colores y espacios.</p>
+      <ul>
+        <li>Declaración: <code>--nombre-variable: valor;</code></li>
+        <li>Uso: <code>var(--nombre-variable)</code></li>
+        <li>Ventajas: reutilización y mantenimiento.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Ejemplo creado para la clase de CSS.</p>
+  </footer>
+
+  <button class="fixed-help">?</button>
+</body>
+</html>

@@ -1,0 +1,396 @@
+/* =========================================================
+   ESTILOS GENERALES DEL DOCUMENTO
+   ========================================================= */
+
+/* Estilos básicos para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    /* Define la tipografía por defecto de TODA la página.
+       - "Arial" será la primera opción.
+       - "sans-serif" es el “plan B” genérico: si no existe Arial,
+         el navegador usa cualquier fuente sans-serif disponible.
+       Ventaja: consistencia visual y lectura clara. */
+
+    margin: 0;
+    /* Los navegadores aplican márgenes por defecto al <body>.
+       Esto los elimina para empezar con un lienzo “limpio”
+       y evitar ese borde blanco alrededor de la web. */
+
+    padding: 0;
+    /* Igual que margin: algunos navegadores pueden aplicar padding por defecto.
+       Se deja a 0 para controlar el espaciado desde CSS de forma explícita. */
+
+    background-color: #f4f4f4;
+    /* Color de fondo del documento (gris muy claro).
+       Útil para que los bloques blancos (tarjetas) destaquen.
+       #f4f4f4 es un tono típico de fondo “neutral” de interfaz. */
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+/* Estilos básicos para el encabezado */
+header {
+    background-color: #6EBF4B;
+    /* Fondo verde claro del encabezado.
+       Sirve para dar identidad visual y separar claramente la zona superior. */
+
+    color: white;
+    /* Color del texto dentro del header. Blanco contrasta con el verde. */
+
+    text-align: center;
+    /* Centra horizontalmente el texto y elementos inline dentro del header
+       (por ejemplo un h1, un texto o enlaces). */
+
+    padding: 1rem 0;
+    /* Relleno vertical (arriba y abajo) de 1rem y 0 a los lados.
+       - rem es relativo al tamaño de fuente del HTML (suele 16px).
+       - 1rem ≈ 16px (aprox).
+       Esto crea “aire” para que el header no quede pegado. */
+}
+
+
+/* Estilo para el título principal dentro del encabezado */
+h1 {
+    margin: 0;
+    /* Los h1 traen margen por defecto arriba/abajo.
+       Se elimina para que el header quede más compacto y controlado. */
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+/* Estilo básico para el logo */
+.logo {
+    max-width: 100%;
+    /* Impide que la imagen exceda el ancho del contenedor.
+       Aunque pongas width: 300px, max-width:100% asegura que
+       en pantallas pequeñas no se salga del layout. */
+
+    height: auto;
+    /* Mantiene la proporción de la imagen.
+       Si se cambia el ancho, el alto se ajusta automáticamente
+       para no deformar el logo. */
+
+    width: 300px;
+    /* Tamaño “objetivo” del logo en pantallas normales.
+       Ojo: max-width:100% puede limitarlo si el contenedor es menor. */
+
+    display: block;
+    /* Por defecto, <img> es inline.
+       Con block:
+       - permite usar margin auto para centrar,
+       - evita comportamientos raros con espacios/line-height. */
+
+    margin: 0 auto;
+    /* Centra horizontalmente el logo:
+       - 0 en vertical
+       - auto en izquierda y derecha.
+       Funciona porque el elemento es block y tiene un width definido. */
+}
+
+
+/* =========================================================
+   LISTADO DE PRODUCTOS EN TARJETAS (FLEXBOX)
+   ========================================================= */
+
+/* Diseño del contenedor de las tarjetas */
+.productos {
+    display: flex;
+    /* Convierte el contenedor en flex container.
+       Sus hijos (las .tarjeta) pasan a ser flex items
+       y se distribuyen en fila por defecto. */
+
+    flex-wrap: wrap;
+    /* Permite que los items salten a la siguiente línea
+       cuando no caben en el ancho disponible.
+       Sin esto, intentarían “apretarse” en una sola fila. */
+
+    justify-content: center;
+    /* Alineación en el eje principal (horizontal si flex-direction es row).
+       "center" centra el conjunto de tarjetas dentro del contenedor. */
+
+    gap: 20px;
+    /* Espacio entre items flex.
+       Reemplaza la necesidad de meter márgenes individuales a cada tarjeta.
+       Muy cómodo para grids flexibles. */
+
+    padding: 20px;
+    /* Espacio interior del contenedor para que las tarjetas no queden
+       pegadas a los bordes de la ventana/pantalla. */
+}
+
+
+/* =========================================================
+   TARJETAS INDIVIDUALES
+   ========================================================= */
+
+/* Estilo para las tarjetas individuales */
+.tarjeta {
+    background-color: white;
+    /* Fondo blanco típico de “card UI”.
+       Contrasta con el body gris. */
+
+    border-radius: 10px;
+    /* Redondea las esquinas de la tarjeta.
+       Visualmente es más moderno y suave. */
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra:
+       - 0: desplazamiento X (sin mover a derecha/izquierda)
+       - 4px: desplazamiento Y (hacia abajo)
+       - 6px: difuminado (blur)
+       - rgba(..., 0.1): color negro con 10% de opacidad
+       Resultado: una elevación sutil. */
+
+    overflow: hidden;
+    /* Oculta lo que sobresalga de la tarjeta.
+       Muy útil para que la imagen (o contenido) respete el borde redondeado.
+       Sin overflow hidden, una imagen podría “salirse” visualmente
+       de las esquinas redondeadas. */
+
+    text-align: center;
+    /* Centra el texto dentro de la tarjeta. */
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Transición suave cuando cambian transform y box-shadow:
+       - 0.3s: duración
+       - ease: acelera y desacelera de forma natural
+       Esto hace que el hover se vea fluido, no brusco. */
+
+    flex: 1 1 calc(16.66% - 20px);
+    /* Atajo equivalente a:
+       flex-grow: 1;
+       flex-shrink: 1;
+       flex-basis: calc(16.66% - 20px);
+
+       Interpretación:
+       - flex-basis: tamaño base de cada tarjeta.
+         16.66% ≈ 100/6 => objetivo: 6 tarjetas por fila.
+         Se resta 20px para compensar el "gap" y evitar desbordes.
+       - grow: 1 => si sobra espacio, la tarjeta puede crecer.
+       - shrink: 1 => si falta espacio, la tarjeta puede encogerse.
+       Resultado: layout flexible y responsive. */
+
+    max-width: calc(16.66% - 20px);
+    /* Evita que una tarjeta crezca más de ese tamaño.
+       Esto fuerza el “grid” de 6 columnas en pantallas grandes
+       (si no, con flex-grow podría expandirse demasiado). */
+
+    min-width: 200px;
+    /* Evita que, en pantallas medianas, las tarjetas se hagan
+       demasiado pequeñas e ilegibles.
+       Cuando ya no caben a 200px, flex-wrap hace que salten de línea. */
+}
+
+
+/* Estilo para las imágenes dentro de las tarjetas */
+.tarjeta img {
+    width: 100%;
+    /* La imagen ocupa todo el ancho de la tarjeta.
+       Se adapta al tamaño de la card. */
+
+    height: auto;
+    /* Mantiene proporción y evita deformación. */
+}
+
+
+/* Efecto hover para las tarjetas */
+.tarjeta:hover {
+    transform: scale(1.05);
+    /* Aumenta el tamaño de la tarjeta un 5%.
+       Ojo: esto puede “empujar” visualmente a elementos cercanos si el layout es muy justo,
+       pero con gap suele funcionar bien. */
+
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    /* Aumenta sombra para simular que la tarjeta “sube” al pasar el ratón.
+       Mayor desplazamiento y mayor opacidad = más énfasis. */
+}
+
+
+/* =========================================================
+   SECCION DEMO (CAJA EXTERNA PARA LA DEMOSTRACION FLEX)
+   ========================================================= */
+
+.demo-flex {
+    padding: 40px;
+    /* Espacio interno grande para separar el contenido del borde. */
+
+    background-color: #dcdcdc;
+    /* Fondo gris un poco más oscuro que el body para diferenciar esta sección. */
+
+    margin: 40px;
+    /* Espacio exterior alrededor de la sección para separarla del resto. */
+
+    border-radius: 10px;
+    /* Consistencia estética: mismo redondeo que las tarjetas. */
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    /* Sombra más marcada que las tarjetas: esta sección destaca más como “bloque demo”. */
+}
+
+
+/* =========================================================
+   CONTENEDOR FLEX (DEMO)
+   ========================================================= */
+
+.contenedor-flex {
+    display: flex;
+    /* Convierte esta caja en contenedor flex para sus items (.item1, .item2, .item3). */
+
+    justify-content: space-between;
+    /* Distribuye los items dejando el máximo espacio entre ellos:
+       - el primero se pega a la izquierda,
+       - el último a la derecha,
+       - el resto se reparte en medio. */
+
+    background-color: aliceblue;
+    /* Fondo suave para diferenciar el área donde actúa flexbox. */
+}
+
+
+/* =========================================================
+   ITEMS FLEX (DEMO)
+   ========================================================= */
+
+.item {
+    padding: 20px;
+    /* Tamaño “cómodo” para que se vean como cajas. */
+
+    text-align: center;
+    /* Centra el texto dentro de cada caja. */
+
+    font-weight: bold;
+    /* Texto en negrita para que destaque y sea legible. */
+}
+
+
+/* Colores de cada item para distinguirlos visualmente */
+.item1 { background-color: red; }
+.item2 { background-color: blue; }
+.item3 { background-color: green; }
+
+
+/* =========================================================
+   REGLAS FLEX INDIVIDUALES (GROW / SHRINK / ORDER)
+   ========================================================= */
+
+/* ITEM 1 */
+.item1 {
+    flex-grow: 1;
+    /* Si sobra espacio, este item crece 1 “parte”.
+       Si otro item tiene grow 2, crecerá el doble que éste. */
+
+    flex-shrink: 1;
+    /* Si falta espacio, este item puede reducirse con intensidad normal.
+       (Valores mayores => se encoge más; 0 => no se encoge). */
+
+    order: 2;
+    /* Cambia el orden visual del item en el contenedor flex.
+       Por defecto order es 0 para todos.
+       Aquí lo estamos poniendo como "segundo". */
+}
+
+
+/* ITEM 2 */
+.item2 {
+    flex-grow: 2;
+    /* Este item crece el DOBLE que item1 y item3 cuando hay espacio libre.
+       Si sobran 300px y solo estos 3 compiten:
+       - item1 (1 parte)
+       - item2 (2 partes)
+       - item3 (1 parte)
+       Total = 4 partes => item2 recibe 2/4 = 50% del espacio extra. */
+
+    flex-shrink: 2;
+    /* Si falta espacio, este item se encoge más que los que tienen shrink 1.
+       Ojo: el cálculo real también depende del flex-basis/tamaño del item,
+       pero como idea: shrink mayor => “cede” más al reducir. */
+
+    order: 1;
+    /* Este aparecerá primero (visual) aunque en el HTML esté en otra posición. */
+}
+
+
+/* ITEM 3 */
+.item3 {
+    flex-grow: 1;
+    /* Crece igual que item1 (misma “prioridad” de crecimiento). */
+
+    flex-shrink: 1;
+    /* Se encoge de forma normal si falta espacio. */
+
+    order: 3;
+    /* Aparece el tercero. */
+}
+
+
+/* =========================================================
+   MEDIA QUERIES (RESPONSIVE)
+   =========================================================
+   Las media queries cambian estilos según el ancho de pantalla.
+   Aquí ajustas el tamaño del logo y el número de tarjetas por fila.
+   ========================================================= */
+
+
+/* Para pantallas de hasta 1200px de ancho */
+@media (max-width: 1200px) {
+    .logo {
+        width: 250px;
+        /* Reduce el logo para que no ocupe tanto en pantallas más pequeñas. */
+    }
+
+    .tarjeta {
+        flex: 1 1 calc(25% - 20px);
+        max-width: calc(25% - 20px);
+        /* Objetivo: 4 tarjetas por fila (100/4 = 25%).
+           Mantiene la misma idea del layout: “grid” flexible con flexbox. */
+    }
+}
+
+
+/* Para pantallas de hasta 900px de ancho */
+@media (max-width: 900px) {
+    .logo {
+        width: 200px;
+        /* Reduce aún más el logo para tablets/portátiles pequeños. */
+    }
+
+    .tarjeta {
+        flex: 1 1 calc(33.33% - 20px);
+        max-width: calc(33.33% - 20px);
+        /* Objetivo: 3 tarjetas por fila (100/3 ≈ 33.33%).
+           Se evita que las tarjetas queden demasiado estrechas. */
+    }
+}
+
+
+/* Para pantallas de hasta 600px de ancho */
+@media (max-width: 600px) {
+    .logo {
+        width: 150px;
+        /* Tamaño cómodo para móviles. */
+    }
+
+    .tarjeta {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+        /* Objetivo: 2 tarjetas por fila.
+           Muy típico en móviles: dos columnas si hay espacio suficiente. */
+    }
+}
+
+
+/* Para pantallas de hasta 400px de ancho */
+@media (max-width: 400px) {
+    .tarjeta {
+        flex: 1 1 100%;
+        max-width: 100%;
+        /* Objetivo: 1 tarjeta por fila.
+           En pantallas muy pequeñas, una columna mejora legibilidad y tactilidad. */
+    }
+}

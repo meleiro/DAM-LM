@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megamarinos Samuel</title>
+
+    <!-- El alumno deberá crear este archivo y darle estilos -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1>Megamarinos Samuel</h1>
+        <p>"Merluza traviesa, directita a tu mesa; salmón juguetón, alegra tu ración."</p>
+        <img src="logo-megamarinos.jpg" alt="Logotipo de Megamarinos Samuel" class="logo">
+    </header>
+
+    <main class="layout">
+        <article class="content">
+            <h2>Pescado congelado con sabor a mar</h2>
+            <p>
+                En <strong>Megamarinos Samuel</strong> te llevamos el océano al congelador:
+                <em>“Pulpo risueño, sabor de ensueño; bacalao formal, siempre listo para el plan.”</em>
+            </p>
+
+            <p>
+                Trabajamos con producto seleccionado y ultracongelado para que conserve
+                todo su sabor y propiedades. Solo tienes que abrir, descongelar… ¡y disfrutar!
+            </p>
+
+            <h3>Especialidades de la casa</h3>
+            <ol>
+                <li>
+                    Filetes de merluza:
+                    <span class="rima">“Merluza coqueta, en tu sartén se marisqueta.”</span>
+                </li>
+                <li>
+                    Lomos de salmón:
+                    <span class="rima">“Salmón juguetón, da alegría al corazón.”</span>
+                </li>
+                <li>
+                    Anillas de calamar:
+                    <span class="rima">“Calamar bailarín, crujiente hasta el fin.”</span>
+                </li>
+                <li>
+                    Variedad para paella:
+                    <span class="rima">“Paella marinera, sabor de primera.”</span>
+                </li>
+            </ol>
+
+            <h3>Carta de congelados (precios orientativos)</h3>
+            <table class="tabla-productos">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Descripción</th>
+                        <th>Precio aprox.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Filetes de merluza</td>
+                        <td>Merluza sin espinas, ideal para horno o plancha.</td>
+                        <td>7,90 € / kg</td>
+                    </tr>
+                    <tr>
+                        <td>Lomos de salmón</td>
+                        <td>Salmón noruego congelado, listo para la parrilla.</td>
+                        <td>12,50 € / kg</td>
+                    </tr>
+                    <tr>
+                        <td>Calamar en anillas</td>
+                        <td>Anillas listas para freír o guisar.</td>
+                        <td>9,30 € / kg</td>
+                    </tr>
+                    <tr>
+                        <td>Preparado de paella</td>
+                        <td>Mejillones, calamar, gambas y más tesoros del mar.</td>
+                        <td>8,70 € / kg</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <aside class="sidebar">
+            <h3>Horario de tienda</h3>
+            <p>Lunes a viernes: 9:30 - 20:30</p>
+            <p>Sábados: 9:30 - 14:30</p>
+            <p>Domingos: cerrado (los peces descansan).</p>
+
+            <h3>Zona de reparto</h3>
+            <p>
+                Reparto a domicilio en la ciudad y alrededores.
+                <br>
+                <em>"Si el frío te da pereza, el pescado llega a tu mesa."</em>
+            </p>
+
+            <h3>Ofertas del día</h3>
+            <ul>
+                <li>Martes de merluza: 10% de descuento.</li>
+                <li>Jueves salmón: 2ª bandeja a mitad de precio.</li>
+                <li>“Viernes calamar, no te puedes escapar”.</li>
+            </ul>
+        </aside>
+
+        <section class="contacto">
+            <h2>Haz tu pedido online</h2>
+            <p>
+                Rellena el formulario y nos pondremos en contacto contigo para confirmar
+                el pedido y el horario de entrega. 
+                <span class="rima">
+                    “Pedido apuntado, pescado asegurado.”
+                </span>
+            </p>
+
+            <form action="#" method="post" class="form">
+                <label class="campo">
+                    <span>Nombre:</span>
+                    <input type="text" name="nombre" placeholder="Tu nombre completo" required>
+                </label>
+
+                <label class="campo">
+                    <span>Email:</span>
+                    <input type="email" name="email" placeholder="tu@email.com" required>
+                </label>
+
+                <label class="campo">
+                    <span>Teléfono:</span>
+                    <input type="tel" name="telefono" placeholder="Tu teléfono de contacto">
+                </label>
+
+                <label class="campo">
+                    <span>Pedido:</span>
+                    <textarea name="pedido" rows="5" cols="40"
+                        placeholder="Ejemplo: 2 kg de merluza, 1 kg de salmón..."></textarea>
+                </label>
+
+                <div class="acciones">
+                    <button type="submit" class="btn btn-enviar">Enviar pedido</button>
+                    <button type="reset" class="btn btn-borrar">Borrar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Megamarinos Samuel - “Fresco en tu paladar, aunque venga de congelar”.</p>
+        <address>
+            Contacto: 
+            <a href="mailto:pedidos@megamarinossamuel.es">pedidos@megamarinossamuel.es</a><br>
+            Teléfono: <a href="tel:+34111222333">+34 111 222 333</a>
+        </address>
+    </footer>
+
+</body>
+
+</html>

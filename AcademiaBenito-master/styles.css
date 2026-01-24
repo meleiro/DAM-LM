@@ -1,0 +1,315 @@
+/* ======================================================
+   BASE
+   Estilos generales que afectan a toda la página
+   ====================================================== */
+
+/* El selector * selecciona TODOS los elementos de la página */
+* {
+  /* box-sizing: border-box hace que el padding y el borde
+     se incluyan dentro del ancho y alto del elemento.
+     Evita problemas de tamaños y es una buena práctica */
+  box-sizing: border-box;
+}
+
+body {
+  /* Eliminamos el margen por defecto del navegador */
+  margin: 0;
+
+  /* Definimos la fuente del documento.
+     system-ui usa la fuente del sistema operativo */
+  font-family: system-ui, Arial, sans-serif;
+
+  /* Color de fondo general de la página */
+  background: #f3f5f7;
+
+  /* Color del texto */
+  color: #1f2937;
+}
+
+/* Estilo para etiquetas <code>, usadas para mostrar código */
+code {
+  /* Fondo suave para diferenciar el código */
+  background: #eef2ff;
+
+  /* Espacio interno */
+  padding: 2px 6px;
+
+  /* Bordes redondeados */
+  border-radius: 6px;
+}
+
+/* ======================================================
+   CABECERA CON GRID
+   Aquí ya empezamos a trabajar CSS Grid
+   ====================================================== */
+
+.topbar {
+  /* Espacio interior de la cabecera */
+  padding: 20px;
+
+  /* Color de fondo oscuro */
+  background: #111827;
+
+  /* Color del texto */
+  color: #fff;
+}
+
+/* Contenedor interno de la cabecera */
+.header-grid {
+  /* Limitamos el ancho máximo */
+  max-width: 1100px;
+
+  /* Centramos horizontalmente */
+  margin: auto;
+
+  /* Convertimos el contenedor en GRID */
+  display: grid;
+
+  /* Definimos dos columnas:
+     - auto: se ajusta al tamaño del contenido (logo)
+     - 1fr: ocupa el resto del espacio (texto) */
+  grid-template-columns: auto 1fr;
+
+  /* Alineamos verticalmente los elementos */
+  align-items: center;
+
+  /* Espacio entre columnas */
+  gap: 16px;
+}
+
+/* Imagen del logo */
+.logo {
+  /* Altura fija del logo */
+  height: 150px;
+
+  /* Bordes redondeados */
+  border-radius: 8px;
+
+  /* object-fit: contain hace que la imagen
+     se adapte sin deformarse */
+  object-fit: contain;
+}
+
+/* Título principal */
+.title h1 {
+  /* Eliminamos margen por defecto */
+  margin: 0;
+
+  /* Tamaño de letra */
+  font-size: 24px;
+}
+
+/* Subtítulo */
+.subtitle {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+
+  /* opacity reduce la intensidad del texto */
+  opacity: 0.85;
+}
+
+/* ======================================================
+   TARJETAS
+   Estilo reutilizable para bloques de contenido
+   ====================================================== */
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+
+  /* Sombra para efecto de tarjeta */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+}
+
+/* Avisos o notas */
+.note {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+}
+
+/* Textos de ayuda */
+.hint {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* ======================================================
+   GRID PRINCIPAL (LAYOUT DE LA PÁGINA)
+   Aquí está lo más importante para explicar GRID
+   ====================================================== */
+
+.page {
+  max-width: 1100px;
+  margin: 18px auto;
+  padding: 0 14px;
+
+  /* Activamos GRID */
+  display: grid;
+
+  /* Separación entre filas y columnas */
+  gap: 14px;
+
+  /* Definimos 3 columnas:
+     - menú (240px)
+     - contenido (flexible)
+     - lateral (260px) */
+  grid-template-columns: 240px 1fr 260px;
+
+  /* Definimos las áreas del layout */
+  grid-template-areas:
+    "nav    main   sidebar"
+    "nav    main   widgets"
+    "footer footer footer";
+}
+
+/* Asignamos cada zona a su área */
+.nav     { grid-area: nav; }
+.main    { grid-area: main; }
+.sidebar { grid-area: sidebar; }
+.widgets { grid-area: widgets; }
+.footer  { grid-area: footer; }
+
+/* ======================================================
+   RESPONSIVE
+   Cambiamos el layout en pantallas pequeñas
+   ====================================================== */
+
+@media (max-width: 900px) {
+  .page {
+    /* Pasamos a una sola columna */
+    grid-template-columns: 1fr;
+
+    /* Reordenamos las áreas en vertical */
+    grid-template-areas:
+      "nav"
+      "main"
+      "sidebar"
+      "widgets"
+      "footer";
+  }
+}
+
+/* ======================================================
+   MENÚ
+   ====================================================== */
+
+.menu {
+  /* Quitamos viñetas */
+  list-style: none;
+
+  /* Eliminamos padding y margen */
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.menu li {
+  margin: 8px 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #2563eb;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+/* ======================================================
+   GALERÍA CON GRID
+   Grid automático y responsive
+   ====================================================== */
+
+.grid-gallery {
+  margin-top: 12px;
+
+  display: grid;
+  gap: 10px;
+
+  /* auto-fit crea tantas columnas como quepan
+     minmax define tamaño mínimo y máximo */
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+
+  /* Altura base de las filas */
+  grid-auto-rows: 110px;
+}
+
+/* Estilo base de cada elemento */
+.photo {
+  border-radius: 12px;
+
+  /* Usamos grid dentro del elemento */
+  display: grid;
+
+  /* Centrado horizontal y vertical */
+  place-items: center;
+
+  font-weight: 700;
+  background: #e0f2fe;
+  border: 1px solid #bae6fd;
+}
+
+/* Elemento grande: ocupa 2 columnas y 2 filas */
+.photo.big {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: #dcfce7;
+}
+
+/* Elemento alto: ocupa 2 filas */
+.photo.tall {
+  grid-row: span 2;
+  background: #fee2e2;
+}
+
+/* Elemento ancho: ocupa 2 columnas */
+.photo.wide {
+  grid-column: span 2;
+  background: #ede9fe;
+}
+
+/* Ajustes en pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .photo.big,
+  .photo.wide {
+    /* Evitamos que ocupen más de una columna */
+    grid-column: span 1;
+  }
+}
+
+/* ======================================================
+   WIDGETS
+   Otro ejemplo de Grid anidado
+   ====================================================== */
+
+.widgets-grid {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+
+  /* Dos columnas iguales */
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.widget {
+  border-radius: 12px;
+  padding: 16px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  font-weight: 700;
+}
+
+/* ======================================================
+   PIE DE PÁGINA
+   ====================================================== */
+
+.footer {
+  text-align: center;
+  opacity: 0.8;
+}

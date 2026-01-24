@@ -1,0 +1,357 @@
+/* 
+----------------------------------------------------------
+   SECCIÓN GLOBAL: ESTILOS BASE Y RESETEO
+----------------------------------------------------------
+*/
+
+/* Fondo general y color base del texto */
+html {
+  color: #1A1A1A;              /* Color de texto por defecto */
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif; /* Fuente principal */
+  font-size: 16px;                           /* Tamaño base del texto */
+  background-color: #EAF4EC;                 /* Color de fondo general */
+  margin: 0;                                 /* Quitamos márgenes del navegador */
+}
+
+/* Contenedor general para centrar el contenido y limitar ancho */
+main {
+  max-width: 1100px;                         /* Ancho máximo */
+  margin: 20px auto;                         /* Centrado horizontal + margen vertical */
+  padding: 0 16px;                           /* Espaciado lateral */
+}
+
+/* Si en tu HTML tienes algo como:
+   <article class="content"> ... </article>
+   <aside class="sidebar"> ... </aside>
+   esto sirve para colocarlos tipo dos columnas usando inline-block */
+.content {
+  display: inline-block;                     /* Se comporta como bloque pero en línea */
+  width: 70%;                                /* Ocupa el 70% del ancho */
+  vertical-align: top;                       /* Alineación arriba */
+  margin-right: 2%;                          /* Separación con el aside */
+}
+
+.sidebar {
+  display: inline-block;
+  width: 28%;                                /* El resto del ancho */
+  vertical-align: top;
+}
+
+/* ----------------------------------------------------------
+   CABECERA CON FONDO OSCURO COMPLETO
+---------------------------------------------------------- */
+
+header {
+  background-color: #111;                    /* Fondo casi negro */
+  color: #fff;                               /* Texto blanco */
+  text-align: center;                        /* Centra el contenido */
+  padding: 24px 16px;                        /* Espaciado interior */
+}
+
+/* Título principal de cabecera */
+header h1 {
+  background-color: #111;
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+}
+
+/* Subtítulo / descripción bajo el h1 */
+header p {
+  color: #ccc;
+  margin: 0;
+  padding: 8px 0;
+  background-color: #111;
+}
+
+/* Navegación dentro de la cabecera */
+header nav {
+  margin-top: 12px;
+}
+
+header nav a {
+  color: #EAF4EC;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 0.95rem;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Imágenes dentro del header */
+header img {
+  background-color: #111;
+  border-radius: 10px;
+  margin-top: 16px;
+  width: 180px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Contenedor opcional para imágenes en header */
+header .img-wrapper {
+  background-color: #111;
+  padding: 20px 0;
+}
+
+
+/* 
+----------------------------------------------------------
+   SECCIÓN CON IMAGEN / HERO AREA
+----------------------------------------------------------
+*/
+
+.hero-area,
+.hero {
+  background-color: #A8D5BA;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+/* Imágenes dentro de figure */
+figure img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+figcaption {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 6px;
+  text-align: center;
+}
+
+
+/* 
+----------------------------------------------------------
+   ENLACES <a>
+----------------------------------------------------------
+*/
+
+a {
+  text-decoration: none;
+  color: #145A32;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #27AE60;
+}
+
+
+/* 
+----------------------------------------------------------
+   CLASE .logo
+----------------------------------------------------------
+*/
+
+.logo {
+  width: 20%;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid #145A32;
+}
+
+
+/* 
+----------------------------------------------------------
+   TÍTULOS Y PÁRRAFOS
+----------------------------------------------------------
+*/
+
+.content h2,
+h2 {
+  font-size: 1.6rem;
+  color: #145A32;
+  margin: 24px 0 16px;
+}
+
+h3 {
+  color: #1D8348;
+  margin: 16px 0 10px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+
+/* 
+----------------------------------------------------------
+   BOTONES
+----------------------------------------------------------
+*/
+
+.btn {
+  margin-top: 12px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-enviar {
+  background: #1D8348;
+  color: #FFFFFF;
+}
+
+.btn-borrar {
+  background-color: red;
+  color: #FFFFFF;
+}
+
+/* Efecto hover para ambos botones */
+.btn-enviar:hover {
+  filter: brightness(1.15);
+}
+
+.btn-borrar:hover {
+  filter: brightness(1.1);
+}
+
+
+/* 
+----------------------------------------------------------
+   TABLA DE TARIFAS
+----------------------------------------------------------
+*/
+
+.tabla-tarifas {
+  width: 100%;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  border-collapse: collapse;
+  margin: 16px 0;
+  text-align: center;
+}
+
+/* Encabezado */
+.tabla-tarifas thead th {
+  background: #1D8348;
+  color: #fff;
+  padding: 10px;
+  border-bottom: 4px solid #333;
+}
+
+/* Celdas */
+.tabla-tarifas td {
+  border: 1px solid #333;
+  padding: 16px;
+  vertical-align: top;
+}
+
+/* Filas pares */
+.tabla-tarifas tbody tr:nth-child(even) {
+  background-color: #F3F8F4;
+}
+
+
+/* 
+----------------------------------------------------------
+   FORMULARIO
+----------------------------------------------------------
+*/
+
+.contacto h2 {
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.contacto p {
+  margin-bottom: 8px;
+}
+
+/* Contenedor del formulario */
+.form {
+  background: #fff;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 16px;
+  max-width: 500px;
+  margin: 0 auto 24px;
+}
+
+/* Cada campo del formulario */
+.campo {
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* Etiquetas del formulario */
+.campo > span {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Inputs y textarea */
+input[type="email"],
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #27AE60;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  background-color: #F9FFFB;
+}
+
+/* Estado de foco */
+input[type="email"]:focus,
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #145A32;
+  box-shadow: 0 0 0 2px rgba(20, 90, 50, 0.2);
+}
+
+/* Botones dentro del formulario en fila sencilla (sin flex) */
+.form .acciones {
+  margin-top: 8px;
+}
+
+.form .acciones .btn {
+  margin-right: 10px;    /* Separación entre botones */
+}
+
+
+/* 
+----------------------------------------------------------
+   FOOTER
+----------------------------------------------------------
+*/
+
+.site-footer {
+  margin-top: 24px;
+  padding: 18px 16px;
+  background: #dde3ea;
+  border-top: 1px solid #27AE60;
+  text-align: center;
+  color: #333;
+}
+
+.site-footer address {
+  font-style: normal;
+  margin-top: 6px;
+}
+
+.site-footer a {
+  color: #145A32;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}

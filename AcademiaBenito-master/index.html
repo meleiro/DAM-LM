@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Academia Benito</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="header-grid">
+      <img src="logo.jpg" alt="Logo Academia Benito" class="logo">
+      <div class="title">
+        <h1>Academia Benito</h1>
+        <p class="subtitle">Te lo enseñamos todito</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="card nav">
+      <h2>Menú</h2>
+      <ul class="menu">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Cursos</a></li>
+        <li><a href="#">Horario</a></li>
+        <li><a href="#">Profesorado</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+
+      <div class="note">
+        <strong>Reto:</strong> convierte el menú en un grid de 2 columnas.
+      </div>
+    </nav>
+
+    <main class="card main">
+      <h2>Contenido principal</h2>
+      <p>
+        Esta página sirve para practicar <strong>CSS Grid</strong> en Lenguaje de Marcas.
+        El layout general usa <code>grid-template-areas</code> y la galería
+        <code>auto-fit</code> y <code>minmax</code>.
+      </p>
+
+      <section class="gallery">
+        <h3>Galería de aulas</h3>
+
+        <div class="grid-gallery">
+          <article class="photo big">Aula 1</article>
+          <article class="photo">Aula 2</article>
+          <article class="photo">Aula 3</article>
+          <article class="photo tall">Aula 4</article>
+          <article class="photo">Aula 5</article>
+          <article class="photo">Aula 6</article>
+          <article class="photo wide">Laboratorio</article>
+          <article class="photo">Sala A</article>
+          <article class="photo">Sala B</article>
+          <article class="photo">Sala C</article>
+          <article class="photo">Sala D</article>
+          <article class="photo">Sala E</article>
+        </div>
+
+        <p class="hint">
+          Prueba a modificar <code>gap</code>, <code>fr</code> y los
+          <code>span</code> de los elementos.
+        </p>
+      </section>
+    </main>
+
+    <aside class="card sidebar">
+      <h2>Avisos</h2>
+      <p>
+        Aquí puedes colocar información importante para el alumnado,
+        fechas de exámenes o recordatorios.
+      </p>
+
+      <div class="note">
+        <strong>Reto:</strong> mueve este panel debajo del contenido en móvil.
+      </div>
+    </aside>
+
+    <section class="card widgets">
+      <h2>Accesos rápidos</h2>
+
+      <div class="widgets-grid">
+        <div class="widget">Plataforma</div>
+        <div class="widget">Apuntes</div>
+        <div class="widget">Tareas</div>
+        <div class="widget">Notas</div>
+      </div>
+
+      <p class="hint">
+        Reto: haz que “Plataforma” ocupe 2 columnas y “Tareas” 2 filas.
+      </p>
+    </section>
+
+    <footer class="card footer">
+      <p>© Academia Benito — Lenguaje de Marcas</p>
+    </footer>
+  </div>
+</body>
+</html>

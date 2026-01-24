@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!-- Indica que el documento está escrito en HTML5. 
+     Ayuda a los navegadores a interpretar correctamente el código. -->
+
+<html lang="en">
+<!-- Elemento raíz de todo el documento HTML.
+     El atributo lang="en" indica que el contenido está en inglés.
+     Si el contenido está en español, se recomienda lang="es". -->
+
+<head>
+    <!-- Sección de metadatos del documento: información que no se muestra en pantalla. -->
+
+    <meta charset="UTF-8">
+    <!-- Define la codificación de caracteres. UTF-8 permite usar tildes, eñes y símbolos correctamente. -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Hace que la página sea responsive, adaptándose a pantallas móviles. -->
+
+    <title>Limones Romualdo</title>
+    <!-- Título que aparece en la pestaña del navegador o al guardar la página como favorito. -->
+</head>
+
+<body>
+    <!-- Todo el contenido visible para el usuario va dentro del body. -->
+
+    <header>
+        <!-- <header> representa la cabecera principal del documento.
+             Suele contener el título, el logo y el menú de navegación. -->
+        
+        <h1>Limones Romualdo</h1>
+        <!-- <h1> es el encabezado principal del sitio web.
+             Solo debe haber uno por documento, ya que indica el tema principal. -->
+
+        <nav>
+            <!-- <nav> define una zona de navegación con enlaces a las secciones del sitio. -->
+
+            <a href="#">Inicio</a>
+            <a href="#">Tienda</a>
+            <a href="#" target="_top">Recetas</a>
+            <a href="#">Contacto</a>
+            <!-- Cada <a> es un hipervínculo (enlace).
+                 target="_top" abre el enlace en la parte superior de la ventana, 
+                 saliendo de cualquier marco o iframe. -->
+        </nav>
+    </header>
+
+    <!-- Fuera del main, se incluyen dos <figure> para mostrar imágenes destacadas. -->
+    <figure>
+        <img src="tartaQueso.jpg" width="250" alt="Tarta con flequillo de galleta">
+        <!-- <img> inserta una imagen. 
+             - src: ruta del archivo.
+             - width: ancho de la imagen (en píxeles).
+             - alt: texto alternativo para accesibilidad o si la imagen no carga. -->
+        <figcaption>Tarta de queso con galleta</figcaption>
+        <!-- <figcaption> es el pie descriptivo de la figura o imagen. -->
+    </figure>
+
+    <figure>
+        <img src="tartaQueso.jpg" width="250" alt="Tarta con flequillo de galleta">
+        <figcaption>Tarta de queso con galleta</figcaption>
+        <!-- Se repite para mostrar otra imagen con descripción. -->
+    </figure>
+
+    <main>
+        <!-- <main> contiene el contenido principal de la página.
+             Solo debe haber un <main> por documento HTML. -->
+
+        <article>
+            <!-- <article> representa un contenido independiente y completo, 
+                 como una noticia, receta o entrada de blog. -->
+            
+            <h3>Nuestra receta de tarta de limón</h3>
+            <!-- <h3> es un subtítulo, jerárquicamente inferior al <h1>. -->
+
+            <img src="tarta.jpg" width="250">
+            <!-- Imagen ilustrativa del artículo. 
+                 (Se recomienda añadir atributo alt por accesibilidad.) -->
+
+            <br>
+            <a href="https://www.bonviveur.es/recetas/tarta-de-limon-sin-horno">
+                Pincha aquí para ver la receta
+            </a>
+            <!-- Enlace externo hacia otra web. 
+                 Abre la receta completa en una página diferente. -->
+        </article>
+
+        <section>
+            <!-- <section> agrupa un bloque temático dentro del contenido principal.
+                 Aquí se usa para el formulario de suscripción a la newsletter. -->
+
+            <h3>Únete a nuestra newsletter</h3>
+            <!-- Título de la sección. -->
+
+            <form>
+                <!-- <form> define un formulario para recopilar datos del usuario. -->
+
+                <label>Nombre:
+                    <input type="text" placeholder="Escribe aquí tu nombre">
+                </label>
+                <!-- <label> vincula texto descriptivo con un campo de entrada.
+                     type="text" crea una caja de texto de una línea.
+                     placeholder muestra un texto guía dentro del campo. -->
+
+                <br><br>
+
+                <label>Email:
+                    <input type="mail" placeholder="Escribe aquí tu nombre">
+                </label>
+                <!-- type="mail" (mejor sería type="email") valida formato de correo automáticamente. -->
+
+                <br><br>
+
+                <button type="submit">Apuntarse</button>
+                <!-- <button type="submit"> envía el formulario. -->
+
+                <button type="reset">Borrar</button>
+                <!-- <button type="reset"> limpia todos los campos del formulario. -->
+
+                <br><br>
+            </form>
+        </section>
+
+        <aside>
+            <!-- <aside> contiene información complementaria al contenido principal:
+                 enlaces relacionados, publicidad, etc. -->
+            <h2>Productos relacionados</h2>
+
+            <ul>
+                <!-- <ul> crea una lista no ordenada (con viñetas). -->
+                <li><a href="#">Limones para chupar</a></li>
+                <li><a href="#">Kiwis para masajes</a></li>
+                <li><a href="#">Pepinos para soñar</a></li>
+                <!-- Cada <li> es un elemento de lista.
+                     En este caso, cada uno contiene un enlace. -->
+            </ul>
+        </aside>
+
+    </main>
+
+    <footer>
+        <!-- <footer> representa el pie de página del documento o de una sección.
+             Suele incluir contacto, derechos de autor o enlaces secundarios. -->
+
+        <address>
+            <!-- <address> contiene información de contacto del autor o la empresa. -->
+            Contacto:
+            <a href="mailto:info@limonesromualdo">enviar mail</a>
+            <!-- Enlace de correo: al hacer clic abre el cliente de email predeterminado. -->
+        </address>
+
+        <time datetime="2025-10-31T15:30">31 de octubre de 2025</time>
+        <!-- <time> marca semánticamente una fecha y hora. 
+             datetime usa formato ISO 8601 (AAAA-MM-DDThh:mm). -->
+
+        <p>&copy; 2025 Limones Romualdo, todos los derechos reservados</p>
+        <!-- &copy; es la entidad HTML para el símbolo © (copyright). -->
+    </footer>
+
+</body>
+</html>

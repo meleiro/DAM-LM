@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zumitos Alexei</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Layout principal por áreas (Grid) -->
+  <div class="layout">
+
+    <header class="site-header">
+      <div class="brand">
+        <img class="brand__logo" src="img/logo-zumitos.jpg" alt="Logo de Zumitos Alexei" />
+        <div class="brand__text">
+          <strong class="brand__name">Zumitos Alexei</strong>
+          <span class="brand__tagline">Zumos naturales · Sin prisas · Con cariño</span>
+        </div>
+      </div>
+
+      <a class="cta" href="#productos">Ver carta</a>
+    </header>
+
+    <nav class="site-nav" aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Zumos</a>
+      <a href="#galeria">Galería</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <main class="site-main" id="inicio">
+      <!-- HERO: dentro del main, un grid interno -->
+      <section class="hero">
+        <div class="hero__copy">
+          <h1>Un sorbo y cambia el día</h1>
+          <p>
+            En Zumitos Alexei preparamos zumos y smoothies con fruta de temporada.
+            Elige tu favorito o crea tu mezcla.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#productos">Explorar zumos</a>
+            <a class="btn btn--ghost" href="#contacto">Pedir info</a>
+          </div>
+
+          <ul class="hero__bullets">
+            <li>100% fruta</li>
+            <li>Sin azúcares añadidos</li>
+            <li>Opciones detox y proteicas</li>
+          </ul>
+        </div>
+
+        <figure class="hero__media">
+          <img src="img/hero-zumo.png" alt="Vasos de zumo natural con fruta" />
+          <figcaption>Frescura real, ingredientes reales.</figcaption>
+        </figure>
+      </section>
+
+      <!-- FEATURES: grid responsivo con auto-fit -->
+      <section class="features" aria-label="Ventajas">
+        <article class="feature">
+          <h3>Fruta de temporada</h3>
+          <p>Compramos local siempre que podemos y cambiamos la carta según estación.</p>
+        </article>
+        <article class="feature">
+          <h3>Hecho al momento</h3>
+          <p>Lo preparamos en directo. Nada de “ya exprimido” ni neveras eternas.</p>
+        </article>
+        <article class="feature">
+          <h3>Personalizable</h3>
+          <p>Más hielo, menos hielo, con jengibre, con proteína… tú mandas.</p>
+        </article>
+        <article class="feature">
+          <h3>Take away</h3>
+          <p>Te lo llevas listo. También disponible para eventos pequeños.</p>
+        </article>
+      </section>
+
+      <!-- PRODUCTOS: grid avanzado con auto-fit -->
+      <section class="section" id="productos">
+        <div class="section__head">
+          <h2>Carta de zumitos</h2>
+          <p>Rejilla responsiva con <code>auto-fit</code>: las tarjetas se adaptan al ancho.</p>
+        </div>
+
+        <div class="products">
+          <article class="card">
+            <img src="img/naranja.jpg" alt="Zumo de naranja" />
+            <div class="card__body">
+              <h3>Naranja clásica</h3>
+              <p>Dulce, simple, perfecta.</p>
+              <span class="price">2,50 €</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="img/fresa.jpg" alt="Smoothie de fresa" />
+            <div class="card__body">
+              <h3>Fresa & plátano</h3>
+              <p>Cremoso y suave.</p>
+              <span class="price">3,20 €</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="img/mango.jpg" alt="Zumo de mango" />
+            <div class="card__body">
+              <h3>Mango tropical</h3>
+              <p>Toque exótico, muy aromático.</p>
+              <span class="price">3,40 €</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="img/pina.jpg" alt="Zumo de piña" />
+            <div class="card__body">
+              <h3>Piña fresca</h3>
+              <p>Ligero y refrescante.</p>
+              <span class="price">3,10 €</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="img/kiwi.jpg" alt="Zumo de kiwi" />
+            <div class="card__body">
+              <h3>Kiwi power</h3>
+              <p>Vitamina C para días intensos.</p>
+              <span class="price">3,30 €</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="img/sandia.jpg" alt="Zumo de sandía" />
+            <div class="card__body">
+              <h3>Sandía helada</h3>
+              <p>La estrella del verano.</p>
+              <span class="price">2,90 €</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="img/uva.jpg" alt="Zumo de uva" />
+            <div class="card__body">
+              <h3>Uva morada</h3>
+              <p>Dulzor natural, color brutal.</p>
+              <span class="price">3,50 €</span>
+            </div>
+          </article>
+
+          <article class="card card--highlight">
+            <img src="img/detox.jpg" alt="Zumo detox verde" />
+            <div class="card__body">
+              <h3>Detox verde</h3>
+              <p>Manzana + pepino + espinaca + limón.</p>
+              <span class="price">3,80 €</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- GALERÍA: auto-fill para “rellenar” columnas incluso si sobran huecos -->
+      <section class="section" id="galeria">
+        <div class="section__head">
+          <h2>Galería</h2>
+          <p>
+            Rejilla con <code>auto-fill</code>: mantiene “pistas” aunque falten elementos
+            y rellena el espacio con columnas disponibles.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <img src="img/galeria-1.jpg" alt="Preparación de frutas" />
+          <img src="img/galeria-2.jpg" alt="Zumos servidos" />
+          <img src="img/galeria-3.jpg" alt="Fruta variada" />
+          <img src="img/galeria-4.jpg" alt="Detalle de smoothie" />
+          <img src="img/galeria-5.jpg" alt="Barra de zumos" />
+          <img src="img/galeria-6.jpg" alt="Ingredientes frescos" />
+        </div>
+      </section>
+
+      <!-- OPINIONES: grid con áreas internas -->
+      <section class="section" id="opiniones">
+        <div class="section__head">
+          <h2>Opiniones</h2>
+          <p>Mini layout por áreas dentro de cada testimonio.</p>
+        </div>
+
+        <div class="testimonials">
+          <article class="quote">
+            <div class="quote__avatar" aria-hidden="true">A</div>
+            <div class="quote__content">
+              <p>“El detox verde me salvó las mañanas. Se nota que la fruta es buena.”</p>
+              <span class="quote__meta">Ana · 5★</span>
+            </div>
+          </article>
+
+          <article class="quote">
+            <div class="quote__avatar" aria-hidden="true">R</div>
+            <div class="quote__content">
+              <p>“Rápidos, amables y los smoothies tienen un sabor brutal.”</p>
+              <span class="quote__meta">Raúl · 5★</span>
+            </div>
+          </article>
+
+          <article class="quote">
+            <div class="quote__avatar" aria-hidden="true">L</div>
+            <div class="quote__content">
+              <p>“Me flipa que cambien la carta según temporada. Así no te cansas.”</p>
+              <span class="quote__meta">Laura · 4★</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section class="section" id="contacto">
+        <div class="section__head">
+          <h2>Contacto</h2>
+          <p>Formulario simple (solo maqueta). Puedes conectarlo luego a backend si quieres.</p>
+        </div>
+
+        <form class="form">
+          <label>
+            Nombre
+            <input type="text" placeholder="Tu nombre" />
+          </label>
+
+          <label>
+            Email
+            <input type="email" placeholder="tu@email.com" />
+          </label>
+
+          <label>
+            Mensaje
+            <textarea rows="4" placeholder="¿Qué zumito quieres hoy?"></textarea>
+          </label>
+
+          <button class="btn btn--primary" type="button">Enviar</button>
+        </form>
+      </section>
+    </main>
+
+    <aside class="site-aside">
+      <section class="aside-box">
+        <h3>Horario</h3>
+        <p>L–V: 08:30–14:00<br/>S: 10:00–13:30</p>
+      </section>
+
+      <section class="aside-box">
+        <h3>Promo del día</h3>
+        <p><strong>2×1</strong> en “Naranja clásica” de 12:00 a 13:00.</p>
+      </section>
+
+      <section class="aside-box">
+        <h3>Consejo Alexei</h3>
+        <p>Prueba mango + piña + un toque de limón. Equilibrio perfecto.</p>
+      </section>
+    </aside>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Zumitos Alexei · Hecho con Grid</p>
+      <small>Proyecto HTML + CSS (maqueta). Imágenes referenciadas desde <code>img/</code>.</small>
+    </footer>
+  </div>
+
+  <!-- Pequeño script opcional (no necesario, pero queda bien). Si quieres 100% HTML/CSS, bórralo. -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
