@@ -1,0 +1,774 @@
+/* =========================================================
+   BASE
+   ---------------------------------------------------------
+   Aquí definimos:
+   1) Variables CSS (Custom Properties) en :root
+   2) Reglas globales (reset mínimo)
+   3) Estilos base del body y utilidades
+   ========================================================= */
+
+/* :root = el elemento raíz (html). 
+   Las variables declaradas aquí son “globales” y se pueden
+   usar en cualquier parte con var(--nombre). */
+:root{
+  /* Color de fondo principal de la página */
+  --bg: #0f1216;
+
+  /* Color “tarjeta”: usado en contenedores para contraste */
+  --card: #171b22;
+
+  /* Color principal del texto (alta legibilidad) */
+  --text: #eaeef7;
+
+  /* Color de texto secundario (menos énfasis) */
+  --muted: #a8b0c0;
+
+  /* Color de acento principal (botones, detalles, resaltados) */
+  --accent: #ff4d4d;
+
+  /* Segundo acento (para badges, puntos, highlights alternos) */
+  --accent2: #ffd166;
+
+  /* Líneas/bordes suaves (con transparencia) */
+  --line: rgba(255,255,255,.10);
+
+  /* Radio base (esquinas redondeadas) para consistencia visual */
+  --r: 18px;
+
+  /* Sombra reutilizable (profundidad) */
+  --shadow: 0 14px 30px rgba(0,0,0,.35);
+}
+
+/* Regla global:
+   box-sizing: border-box hace que el padding y el border
+   se incluyan dentro del width/height, facilitando layouts. */
+*{ box-sizing: border-box; }
+
+/* =========================================================
+   html{ scroll-behavior: smooth; }
+   ---------------------------------------------------------
+   Esta propiedad controla CÓMO se comporta el desplazamiento
+   vertical (scroll) cuando el navegador salta automáticamente
+   a otra parte de la página.
+
+   📌 Contexto típico:
+   Cuando haces clic en un enlace interno:
+       <a href="#contacto">
+
+   El navegador debe desplazarse hasta el elemento con id="contacto".
+
+   Sin esta propiedad:
+   ─────────────────────
+   El salto es INSTANTÁNEO
+   → efecto brusco
+   → mala experiencia visual
+
+   Con scroll-behavior: smooth;
+   ─────────────────────────────
+   El desplazamiento se anima suavemente
+   → el usuario percibe el movimiento
+   → mejora UX (User Experience)
+   → parece una animación hecha con JS (pero no lo es)
+
+   ⚙️ Técnicamente:
+   El navegador interpola la posición del scroll
+   desde el punto actual hasta el destino
+   usando una animación interna optimizada.
+
+   📌 Importante:
+   - Solo afecta a desplazamientos AUTOMÁTICOS
+     (anclas, scrollTo, etc.)
+   - NO afecta al scroll manual con la rueda/trackpad
+   - Es soportado por todos los navegadores modernos
+
+   🧠 Buenas prácticas:
+   Se aplica en html porque:
+   - el scroll pertenece al documento raíz
+   - afecta globalmente a toda la página
+
+   🧪 Alternativa con JS (más control):
+   window.scrollTo({ top: 500, behavior: "smooth" });
+
+   Pero en la mayoría de casos CSS basta 🙂
+
+========================================================= */
+
+html{ scroll-behavior: smooth; }
+
+body{
+  /* Quitamos el margen por defecto del navegador */
+  margin: 0;
+
+  /* Fuente “system-ui”: toma la fuente del sistema del usuario
+     (Windows, macOS, Linux...) para un look moderno y rendimiento. */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* Fondo con “capas”:
+     - 2 radial-gradient para manchas de color suaves (ambientación)
+     - y al final el color base var(--bg) como fallback */
+  background:
+    radial-gradient(
+      1200px 700px at 20% 10%,       /* tamaño y posición del foco */
+      rgba(255,77,77,.22),           /* color rojo con alpha */
+      transparent 60%                /* se desvanece a transparente */
+    ),
+    radial-gradient(
+      900px 600px at 80% 0%,
+      rgba(255,209,102,.18),         /* amarillo con alpha */
+      transparent 55%
+    ),
+    var(--bg);
+
+  /* Color por defecto del texto para toda la página */
+  color: var(--text);
+}
+
+/* Enlaces:
+   color: inherit hace que el enlace herede el color del texto padre,
+   y text-decoration: none elimina el subrayado. */
+a{ color: inherit; text-decoration: none; }
+
+/* Clase utilitaria para texto “apagado” */
+.muted{ color: var(--muted); }
+
+/* Clase utilitaria para precios: más peso y un pelín de tracking
+   (letter-spacing) para dar sensación “premium” */
+.price{
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+
+/* =========================================================
+   TOPBAR
+   ---------------------------------------------------------
+   Cabecera superior fija (sticky) con logo y navegación.
+   ========================================================= */
+
+.topbar{
+  /* sticky: se comporta como relative hasta que llega a top:0,
+     y luego se “pega” arriba. Ideal para menús. */
+  position: sticky;
+
+  /* Se pega al borde superior */
+  top: 0;
+
+  /* z-index alto para que quede por encima del resto al hacer scroll */
+  z-index: 20;
+
+  /* Efecto “cristal” (blur del fondo). 
+     OJO: necesita que el fondo tenga transparencia para notarse. */
+  backdrop-filter: blur(10px);
+
+  /* Fondo semitransparente para ver el blur del contenido detrás */
+  background: rgba(15,18,22,.72);
+
+  /* Línea inferior sutil */
+  border-bottom: 1px solid var(--line);
+
+  /* Espaciado interno */
+  padding: 14px 18px;
+
+  /* Layout flex: coloca brand a la izquierda y nav a la derecha */
+  display: flex;
+  align-items: center;              /* centra vertical */
+  justify-content: space-between;   /* separa extremos */
+  gap: 16px;                        /* espacio entre bloques si se juntan */
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;  /* distancia entre el icono y el texto */
+}
+
+.logo{
+  /* display: grid + place-items = atajo para centrar el contenido */
+  display: grid;
+  place-items: center;
+
+  /* tamaño fijo del “icono contenedor” */
+  width: 44px;
+  height: 44px;
+
+  /* esquinas redondeadas */
+  border-radius: 14px;
+
+  /* fondo con el color acento en versión “suave” (alpha bajo) */
+  background: rgba(255,77,77,.18);
+
+  /* borde para delimitar el icono */
+  border: 1px solid rgba(255,77,77,.25);
+
+  /* ANIMACIÓN:
+     animation: <name> <duration> <timing> <iteration-count>;
+     - logoWobble = nombre definido en @keyframes
+     - 2.6s = tarda 2.6 segundos por ciclo
+     - ease-in-out = acelera y desacelera suavemente
+     - infinite = se repite para siempre */
+  animation: logoWobble 2.6s ease-in-out infinite;
+}
+
+.brand-text h1{
+  margin: 0;              /* quitamos márgenes por defecto del h1 */
+  font-size: 18px;        /* tamaño controlado (h1 no “gigante”) */
+  letter-spacing: .3px;   /* ligero espaciado para estética */
+}
+
+.brand-text p{
+  margin: 3px 0 0;        /* pegado al h1, con un poco de aire */
+  font-size: 13px;        /* más pequeño que el título */
+  color: var(--muted);    /* texto secundario */
+}
+
+.nav{
+  display: flex;
+  gap: 12px;              /* separación entre enlaces */
+  font-size: 14px;
+  color: var(--muted);    /* por defecto, nav más “apagado” */
+}
+
+.nav a{
+  padding: 8px 10px;      /* “hit area” cómoda para clicar */
+  border-radius: 999px;   /* forma “píldora” */
+  border: 1px solid transparent;
+
+  /* transition: suaviza cambios al hover
+     - transform: movimiento suave
+     - border-color: aparece borde progresivo
+     - color: cambia color del texto progresivo */
+  transition: transform .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.nav a:hover{
+  /* sube 1px para sensación de interacción */
+  transform: translateY(-1px);
+
+  /* aparece borde suave */
+  border-color: rgba(255,255,255,.18);
+
+  /* texto pasa a principal */
+  color: var(--text);
+}
+
+
+/* =========================================================
+   HERO
+   ---------------------------------------------------------
+   Bloque principal con texto a la izquierda y “tarjeta producto”
+   a la derecha. Se usa CSS Grid.
+   ========================================================= */
+
+.hero{
+  max-width: 1100px;              /* limita ancho para no estirar en pantallas grandes */
+  margin: 0 auto;                 /* centra horizontalmente */
+  padding: 32px 18px 14px;        /* espacio arriba/lados/abajo */
+
+  display: grid;
+  /* 2 columnas: la izquierda un poco más ancha que la derecha */
+  grid-template-columns: 1.1fr .9fr;
+  gap: 22px;                      /* espacio entre columnas */
+}
+
+.hero-left h2{
+  margin: 0 0 10px;
+  font-size: 38px;
+  line-height: 1.1;               /* más compacto y “moderno” */
+}
+
+.hero-left p{
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 16px;
+
+  /* 52ch = “52 caracteres” aprox.
+     Limita el ancho de línea para mejorar legibilidad */
+  max-width: 52ch;
+}
+
+.hero-actions{
+  display: flex;
+  flex-wrap: wrap;       /* si no cabe, baja a la siguiente línea */
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.badge{
+  /* inline-flex: se comporta como “elemento en línea” pero con flex interno */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+
+  /* fit-content: el ancho se ajusta a lo que ocupa el contenido */
+  width: fit-content;
+
+  /* Animación declarada con subpropiedades (más didáctico):
+     - name: qué keyframes usar
+     - duration: cuánto dura
+     - timing: curva de velocidad
+     - iteration-count: cuántas repeticiones
+     - direction: alterna ida/vuelta */
+  animation-name: badgeGlow;
+  animation-duration: 2.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.badge-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent2);
+
+  /* shorthand: todo en una línea
+     dotPulse (keyframes) + 1s + ease-in-out + infinite */
+  animation: dotPulse 1s ease-in-out infinite;
+}
+
+.hero-right{
+  position: relative;   /* crea un contexto para posicionar elementos hijos absolute */
+  min-height: 320px;
+
+  display: grid;
+  place-items: center;  /* centra la tarjeta en el área derecha */
+}
+
+.hero-card{
+  position: relative;         /* necesario para colocar “shine” absoluto dentro */
+  width: min(380px, 100%);    /* elige el menor: 380px o el 100% del contenedor */
+  border-radius: var(--r);
+
+  /* fondo con degradado sutil: da sensación de “material” */
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.08),
+    rgba(255,255,255,.05)
+  );
+
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  overflow: hidden;           /* recorta el brillo cuando se sale */
+
+  /* Animación de entrada:
+     - cardEntrance define el movimiento/opacidad
+     - 900ms dura menos de 1 segundo (snappy)
+     - cubic-bezier(...) curva personalizada
+     - 1 = se ejecuta una sola vez */
+  animation: cardEntrance 900ms cubic-bezier(.2,.9,.2,1) 1;
+}
+
+.hero-card-top .tag{
+  display: inline-block;
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: .6px;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  background: rgba(255,77,77,.18);
+  border: 1px solid rgba(255,77,77,.25);
+}
+
+.hero-card h3{ margin: 0 0 4px; }
+
+.hero-card-price{
+  display: flex;
+  align-items: baseline;         /* alinea por la línea base del texto */
+  justify-content: space-between;
+  margin: 18px 0;
+}
+
+.mini{ font-size: 12px; }
+
+.shine{
+  /* Capa “brillo” que pasa por encima */
+  position: absolute;
+
+  /* inset es atajo de top/right/bottom/left.
+     Valores negativos hacen que el brillo sea más grande que la tarjeta
+     para que “entre y salga” sin cortarse. */
+  inset: -40% -60%;
+
+  /* Degradado: transparente -> blanco -> transparente (franja brillante) */
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,.22) 50%,
+    transparent 60%
+  );
+
+  /* inclinación de la franja para que parezca “reflejo” */
+  transform: rotate(12deg);
+
+  /* Animación infinita de barrido */
+  animation: shineSweep 2.8s ease-in-out infinite;
+
+  /* Evita que esta capa bloquee clicks sobre el botón */
+  pointer-events: none;
+}
+
+/* Elemento decorativo “flotante” (emoji) */
+.floating-sausage{
+  position: absolute;                 /* se posiciona respecto a .hero-right */
+  right: -10px;
+  bottom: -10px;
+
+  font-size: 56px;
+
+  /* drop-shadow aplica una sombra “real” al emoji (mejor que text-shadow aquí) */
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+
+  /* Animación de flotación suave */
+  animation: floaty 3.2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   MARQUEE (cinta)
+   ---------------------------------------------------------
+   Una cinta horizontal que “se mueve” con animación.
+   ========================================================= */
+
+.marquee{
+  margin: 10px 0 26px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,.03);
+
+  /* importante: oculta el contenido que “sale” al mover la cinta */
+  overflow: hidden;
+}
+
+.marquee-track{
+  display: flex;
+  gap: 34px;
+
+  /* evita saltos de línea: todo queda en una sola línea */
+  white-space: nowrap;
+
+  padding: 12px 0;
+  color: var(--muted);
+
+  /* Animación:
+     - marqueeMove desplaza el track
+     - 18s: lento y continuo
+     - linear: velocidad constante
+     - infinite: bucle */
+  animation: marqueeMove 18s linear infinite;
+}
+
+.marquee-track span{
+  padding: 0 6px;  /* separador interno para que respire */
+}
+
+
+/* =========================================================
+   SECTIONS / CARDS
+   ---------------------------------------------------------
+   Secciones generales (productos, proceso, contacto).
+   ========================================================= */
+
+.section{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 26px 18px;
+}
+
+.section-head h2{
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+
+.section-head p{ margin: 0; }
+
+.grid{
+  margin-top: 16px;
+  display: grid;
+
+  /* 3 columnas iguales */
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+}
+
+.card{
+  border-radius: var(--r);
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 16px;
+  box-shadow: 0 10px 18px rgba(0,0,0,.22);
+
+  /* transiciones para hover suave */
+  transition: transform .2s ease, border-color .2s ease;
+
+  position: relative;
+}
+
+/* Hover “interactivo”:
+   NO es @keyframes: es un cambio de estado con transition */
+.card:hover{
+  transform: translateY(-4px);              /* levanta la tarjeta */
+  border-color: rgba(255,209,102,.35);      /* resalta el borde */
+}
+
+.card-bottom{
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* =========================================================
+   STEPS (animación escalonada)
+   ---------------------------------------------------------
+   Lista de pasos que aparece uno detrás de otro con delay.
+   ========================================================= */
+
+.process .steps{
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;   /* quitamos numeración por defecto */
+  display: grid;
+  gap: 10px;
+}
+
+.step{
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  padding: 12px 14px;
+
+  /* stepPop define la entrada (transform + opacity)
+     700ms = “rápido”
+     cubic-bezier = curva elástica suave
+     both = fill-mode:
+       - aplica el estado inicial antes de empezar (backwards)
+       - y mantiene el estado final al terminar (forwards) */
+  animation: stepPop 700ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+/* Retrasos escalonados:
+   cada elemento empieza un poco después que el anterior */
+.step:nth-child(1){ animation-delay: .05s; }
+.step:nth-child(2){ animation-delay: .15s; }
+.step:nth-child(3){ animation-delay: .25s; }
+.step:nth-child(4){ animation-delay: .35s; }
+.step:nth-child(5){ animation-delay: .45s; }
+
+
+/* =========================================================
+   FORM
+   ---------------------------------------------------------
+   Formulario de contacto.
+   ========================================================= */
+
+.form{
+  margin-top: 14px;
+  display: grid;
+  gap: 12px;
+  max-width: 520px;
+}
+
+label{
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+input, textarea{
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.18);
+  color: var(--text);
+
+  padding: 11px 12px;
+  outline: none;  /* quitamos el outline por defecto (lo sustituimos con borde) */
+}
+
+input:focus, textarea:focus{
+  /* al enfocar, destacamos el borde */
+  border-color: rgba(255,77,77,.55);
+
+  /* mini animación visual de “ping” */
+  animation: focusPing 600ms ease;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ---------------------------------------------------------
+   Botones y variantes.
+   ========================================================= */
+
+.btn{
+  border: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 700;
+  letter-spacing: .2px;
+
+  /* transición para “feedback” al interactuar */
+  transition: transform .15s ease, filter .15s ease;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Active: cuando pulsas, baja y se “encoge” ligeramente */
+.btn:active{
+  transform: translateY(1px) scale(.99);
+}
+
+.btn-primary{
+  /* degradado para volumen */
+  background: linear-gradient(135deg, var(--accent), #ff7a7a);
+
+  /* texto oscuro para contraste sobre rojo */
+  color: #1b0a0a;
+}
+
+.btn-secondary{
+  background: rgba(255,209,102,.18);
+  border: 1px solid rgba(255,209,102,.35);
+  color: var(--text);
+  width: 100%; /* ocupa todo el ancho dentro de la tarjeta */
+}
+
+.btn-ghost{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  color: var(--text);
+}
+
+.btn-small{
+  padding: 8px 12px; /* versión compacta */
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  color: var(--text);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer{
+  border-top: 1px solid var(--line);
+  padding: 20px 18px;
+  text-align: center;
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ---------------------------------------------------------
+   Ajustes para pantallas pequeñas.
+   ========================================================= */
+
+@media (max-width: 900px){
+  /* El hero pasa de 2 columnas a 1 columna (mobile first friendly) */
+  .hero{ grid-template-columns: 1fr; }
+
+  /* Productos pasan a 1 columna para que no queden apretados */
+  .grid{ grid-template-columns: 1fr; }
+}
+
+
+/* =========================================================
+   ANIMACIONES CSS CON @keyframes
+   ---------------------------------------------------------
+   @keyframes define los “fotogramas clave” de la animación.
+   Luego se aplica con animation/animation-name...
+   ========================================================= */
+
+/* 1) logoWobble:
+   from/to equivale a 0% y 100%.
+   La animación rota y escala ligeramente para “vida”. */
+@keyframes logoWobble{
+  from { transform: rotate(-3deg) scale(1); }
+  to   { transform: rotate(3deg)  scale(1.03); }
+}
+
+/* 2) badgeGlow:
+   Usa % para controlar el brillo.
+   box-shadow aumenta en el 50% y vuelve a 0 al final. */
+@keyframes badgeGlow{
+  0%   { box-shadow: 0 0 0 rgba(255,209,102,0); }
+  50%  { box-shadow: 0 0 22px rgba(255,209,102,.18); }
+  100% { box-shadow: 0 0 0 rgba(255,209,102,0); }
+}
+
+/* 3) dotPulse:
+   Efecto “latido” (scale + opacity).
+   Ideal para indicar “activo/en vivo”. */
+@keyframes dotPulse{
+  0%   { transform: scale(1);    opacity: .8; }
+  50%  { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(1);    opacity: .8; }
+}
+
+/* 4) cardEntrance:
+   Entrada suave: sube y aparece (opacity).
+   Muy usada para “carga” de componentes. */
+@keyframes cardEntrance{
+  0%   { transform: translateY(14px); opacity: 0; }
+  100% { transform: translateY(0);    opacity: 1; }
+}
+
+/* 5) shineSweep:
+   Simula un reflejo pasando por la tarjeta.
+   Cambiamos translateX y opacity para que “aparezca y desaparezca”. */
+@keyframes shineSweep{
+  0%   { transform: translateX(-40%) rotate(12deg); opacity: 0; }
+  30%  { opacity: 1; }
+  60%  { opacity: 1; }
+  100% { transform: translateX(40%) rotate(12deg);  opacity: 0; }
+}
+
+/* 6) floaty:
+   Flotación: sube y baja con ligera rotación.
+   Da sensación de “vida” a un elemento decorativo. */
+@keyframes floaty{
+  0%   { transform: translateY(0)    rotate(-4deg); }
+  50%  { transform: translateY(-10px) rotate(4deg); }
+  100% { transform: translateY(0)    rotate(-4deg); }
+}
+
+/* 7) marqueeMove:
+   Desplaza el track para simular una cinta.
+   Normalmente se duplica el contenido para que el bucle no “salte”. */
+@keyframes marqueeMove{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* 8) stepPop:
+   Entrada en “pop”: aparece y se asienta.
+   Combinación de translateY, scale y opacity. */
+@keyframes stepPop{
+  0%   { transform: translateY(10px) scale(.98); opacity: 0; }
+  100% { transform: translateY(0)    scale(1);   opacity: 1; }
+}
+
+/* 9) focusPing:
+   Feedback visual al enfocar input/textarea.
+   box-shadow crea un halo suave de atención. */
+@keyframes focusPing{
+  0%   { box-shadow: 0 0 0 rgba(255,77,77,0); }
+  100% { box-shadow: 0 0 18px rgba(255,77,77,.18); }
+}
