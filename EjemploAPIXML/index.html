@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenWeather XML - Provincias España</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Clima en Provincias de España (XML)</h1>
+
+    <div class="search">
+      <select id="city">
+        <option value="Madrid,ES">Madrid</option>
+        <option value="Barcelona,ES">Barcelona</option>
+        <option value="Valencia,ES">Valencia</option>
+        <option value="Sevilla,ES">Sevilla</option>
+        <option value="Zaragoza,ES">Zaragoza</option>
+        <option value="Málaga,ES">Málaga</option>
+        <option value="Murcia,ES">Murcia</option>
+        <option value="Palma,ES">Palma</option>
+        <option value="Bilbao,ES">Bilbao</option>
+        <option value="A Coruña,ES">A Coruña</option>
+        <option value="Valladolid,ES">Valladolid</option>
+        <option value="Granada,ES">Granada</option>
+        <option value="Vigo,ES">Vigo</option>
+        <option value="Alicante,ES">Alicante</option>
+      </select>
+
+      <button id="btn">Consultar</button>
+    </div>
+
+    <div id="result" class="card"></div>
+    <p id="status"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+:root {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0b1220;
+  color: #eaf0ff;
+  padding: 24px;
+}
+
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+
+.header h1 {
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+
+.header p {
+  margin: 0;
+  color: #b9c6e6;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;  
+}
+/* -------- CARD -------- */
+
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+h2 { 
+  margin: 0 0 16px; 
+  font-size: 16px; 
+}
+
+/* -------- GRID FORM -------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+label span {
+  font-size: 13px;
+  color: #b9c6e6;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.08);
+  color: #eaf0ff;
+  padding: 0 12px;
+  outline: none;
+  box-sizing: border-box; /* 🔥 evita desbordes */
+}
+
+input:focus {
+  border-color: #6ea8ff;
+}
+
+/* Ocupa toda la fila */
+.full {
+  grid-column: 1 / -1;
+}
+
+/* -------- BOTONES -------- */
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+button, .import {
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(110,168,255,0.20);
+  color: #eaf0ff;
+  padding: 0 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover, .import:hover { 
+  filter: brightness(1.08); 
+}
+
+/* -------- TABLA -------- */
+
+.tableWrap { 
+  overflow-x: auto; 
+  margin-top: 12px; 
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+th { 
+  color: #b9c6e6; 
+  font-size: 12px; 
+  font-weight: 700; 
+}
+
+.status {
+  margin-top: 8px;
+  color: #b9c6e6;
+  font-size: 13px;
+}
+
+/* -------- RESPONSIVE -------- */
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

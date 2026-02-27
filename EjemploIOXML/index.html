@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contactos XML - Importar / Exportar</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="header">
+      <h1>Contactos (XML)</h1>
+      <p>Importa y exporta contactos a XML. El <code>id</code> se guarda como atributo: <code>&lt;contacto id="..."&gt;</code>.</p>
+    </header>
+
+    <section class="card">
+      <h2>Nuevo contacto</h2>
+
+      <form id="form" class="grid" autocomplete="off">
+        <label>
+          <span>ID</span>
+          <input id="id" placeholder="ej: 1" required />
+        </label>
+
+        <label>
+          <span>Nombre</span>
+          <input id="nombre" placeholder="ej: Ana López" required />
+        </label>
+
+        <label>
+          <span>Teléfono</span>
+          <input id="telefono" placeholder="ej: +34 600 123 456" />
+        </label>
+
+        <label>
+          <span>Email</span>
+          <input id="mail" type="email" placeholder="ej: ana@email.com" />
+        </label>
+
+        <label class="full">
+          <span>Dirección</span>
+          <input id="direccion" placeholder="ej: Calle Mayor 1, Madrid" />
+        </label>
+
+        <div class="actions full">
+          <button type="submit">Agregar</button>
+          <button type="button" id="clear">Vaciar lista</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <h2>Lista</h2>
+        <div class="toolbar-actions">
+          <button id="export">Exportar XML</button>
+
+          <label class="import">
+            Importar XML
+            <input id="importFile" type="file" accept=".xml,application/xml,text/xml" />
+          </label>
+        </div>
+      </div>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Teléfono</th>
+              <th>Email</th>
+              <th>Dirección</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
