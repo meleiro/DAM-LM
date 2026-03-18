@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Monociclos Mayteh</title>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+  <!-- 
+    CONTENEDOR GENERAL DE LA PÁGINA
+
+    Aquí agrupamos todo el contenido del sitio web.
+    En HTML no es obligatorio usar un contenedor general,
+    pero muchas veces se usa para organizar mejor la estructura.
+  -->
+  <div class="min-h-screen flex flex-col">
+
+    <!-- 
+      =========================================
+      CABECERA DE LA PÁGINA
+      =========================================
+
+      La etiqueta <header> representa la cabecera del sitio o de una sección.
+      Normalmente contiene el título, logotipo, eslogan y, muchas veces,
+      el menú de navegación principal.
+    -->
+    <header class="bg-slate-900 text-white shadow-lg">
+
+      <div class="max-w-7xl mx-auto px-4 md:px-8 py-4">
+
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <!-- 
+        BLOQUE DEL TÍTULO PRINCIPAL DE LA WEB
+
+        <h1> debe ser el encabezado principal del documento.
+        En este caso, el nombre del sitio.
+      -->
+      <div>
+        <h1>Monociclos Mayteh</h1>
+        <p>Equilibrio, diversión y movimiento sobre una rueda</p>
+      </div>
+
+      <!-- 
+        =========================================
+        MENÚ DE NAVEGACIÓN
+        =========================================
+
+        La etiqueta <nav> se usa para los enlaces principales de navegación.
+        Dentro solemos colocar una lista de enlaces con <ul> y <li>.
+      -->
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#ventajas">Ventajas</a></li>
+          <li><a href="#academia">Academia</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      </div>
+     </div>
+    </header>
+
+    <!-- 
+      =========================================
+      HERO O SECCIÓN PRINCIPAL DE PRESENTACIÓN
+      =========================================
+
+      Aunque "hero" no es una etiqueta HTML, normalmente se construye
+      con <section> o <div>.
+
+      Esta es la parte visual o informativa más destacada al inicio
+      de la página.
+    -->
+    <section id="inicio">
+
+      <!-- 
+        PARTE PRINCIPAL DEL HERO:
+        mensaje, llamada de atención y botones/enlaces
+      -->
+      <div>
+        <p>Tienda especializada</p>
+        <h2>Descubre el mundo del monociclo con estilo</h2>
+        <p>
+          En Monociclos Mayteh encontrarás monociclos para iniciarte,
+          mejorar tu técnica o disfrutar del freestyle, el paseo urbano
+          y la aventura.
+        </p>
+
+        <!-- 
+          ENLACES DE ACCIÓN
+
+          Aunque visualmente después podrían parecer botones,
+          en HTML puro siguen siendo enlaces.
+        -->
+        <div>
+          <a href="#catalogo">Ver modelos</a>
+          <a href="#academia">Aprender a montar</a>
+        </div>
+      </div>
+
+      <!-- 
+        SEGUNDA PARTE DEL HERO
+
+        Aquí añadimos información destacada en formato de bloques.
+        Más adelante, con CSS o Tailwind, esto podría colocarse
+        en columnas o tarjetas.
+      -->
+      <div>
+
+        <div>
+          <p>Modelo destacado</p>
+          <h3>Mayteh Urban Pro</h3>
+          <p>Ligero, resistente y perfecto para ciudad.</p>
+        </div>
+
+        <div>
+          <p>Uso recomendado</p>
+          <h3>Iniciación</h3>
+          <p>Ideal para quienes empiezan a trabajar el equilibrio.</p>
+        </div>
+
+        <div>
+          <p>Tamaño popular</p>
+          <h3>20 pulgadas</h3>
+          <p>Muy versátil para aprendizaje y trucos básicos.</p>
+        </div>
+
+        <div>
+          <p>Comunidad</p>
+          <h3>+500 alumnos</h3>
+          <p>Personas que han aprendido con nuestro método.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 
+      =========================================
+      CONTENIDO PRINCIPAL DE LA PÁGINA
+      =========================================
+
+      La etiqueta <main> contiene el contenido central del documento.
+      Debe existir solo una vez por página.
+    -->
+    <main>
+
+      <!-- 
+        SECCIÓN PRINCIPAL DE CONTENIDO
+
+        Aquí colocamos la parte más importante de la página.
+        Dentro hay varias secciones temáticas.
+      -->
+      <section>
+
+        <!-- 
+          =========================================
+          SECCIÓN DE CATÁLOGO
+          =========================================
+
+          Mostramos productos o modelos destacados.
+        -->
+        <section id="catalogo">
+          <h2>Catálogo destacado</h2>
+          <p>Ejemplo de catálogo de monociclos disponibles.</p>
+
+          <!-- 
+            CONTENEDOR DE PRODUCTOS
+
+            Más adelante esto podría convertirse en un layout de columnas.
+          -->
+          <div>
+
+            <!-- PRODUCTO 1 -->
+            <article>
+              <div>Imagen o icono del producto</div>
+              <h3>Monociclo Básico 16"</h3>
+              <p>Pensado para iniciación infantil y primeros pasos.</p>
+              <p>89 €</p>
+              <button>Comprar</button>
+            </article>
+
+            <!-- PRODUCTO 2 -->
+            <article>
+              <div>Imagen o icono del producto</div>
+              <h3>Mayteh Street 20"</h3>
+              <p>Muy equilibrado para aprendizaje avanzado y trucos urbanos.</p>
+              <p>149 €</p>
+              <button>Comprar</button>
+            </article>
+
+            <!-- PRODUCTO 3 -->
+            <article>
+              <div>Imagen o icono del producto</div>
+              <h3>Mayteh Adventure 24"</h3>
+              <p>Perfecto para trayectos largos y rutas más exigentes.</p>
+              <p>219 €</p>
+              <button>Comprar</button>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- 
+          =========================================
+          SECCIÓN DE VENTAJAS
+          =========================================
+        -->
+        <section id="ventajas">
+          <h2>¿Por qué elegir Monociclos Mayteh?</h2>
+
+          <div>
+            <article>
+              <h3>Asesoramiento</h3>
+              <p>
+                Te ayudamos a elegir el tamaño y modelo según edad,
+                altura y experiencia.
+              </p>
+            </article>
+
+            <article>
+              <h3>Calidad</h3>
+              <p>
+                Trabajamos con materiales resistentes para un uso prolongado y seguro.
+              </p>
+            </article>
+
+            <article>
+              <h3>Aprendizaje</h3>
+              <p>
+                Ofrecemos consejos, clases y recursos para progresar desde cero.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- 
+          =========================================
+          SECCIÓN ACADEMIA
+          =========================================
+        -->
+        <section id="academia">
+          <h2>Academia Mayteh</h2>
+          <p>Formación para iniciación y perfeccionamiento.</p>
+
+          <div>
+            <article>
+              <h3>Curso de iniciación</h3>
+              <p>
+                Aprende a subir, mantener el equilibrio y realizar tus
+                primeros recorridos.
+              </p>
+              <a href="#">Más información</a>
+            </article>
+
+            <article>
+              <h3>Técnica y freestyle</h3>
+              <p>
+                Mejora giros, control del cuerpo y movimientos más técnicos
+                sobre el monociclo.
+              </p>
+              <a href="#">Ver niveles</a>
+            </article>
+          </div>
+        </section>
+
+      </section>
+
+      <!-- 
+        =========================================
+        ASIDE
+        =========================================
+
+        <aside> representa contenido complementario.
+        No es la parte principal, pero sí está relacionado con ella.
+
+        Por ejemplo:
+        - datos rápidos
+        - promociones
+        - consejos
+        - anuncios
+        - información secundaria
+      -->
+      <aside>
+
+        <section>
+          <h2>Datos rápidos</h2>
+          <ul>
+            <li>Alumnos activos: 128</li>
+            <li>Modelos en stock: 24</li>
+            <li>Talleres al mes: 8</li>
+            <li>Nivel recomendado: Todos</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Promoción</h2>
+          <p>
+            Este mes, casco y protectores con descuento al comprar un monociclo.
+          </p>
+          <a href="#contacto">Solicitar oferta</a>
+        </section>
+
+        <section>
+          <h2>Consejo del día</h2>
+          <p>
+            Empieza practicando cerca de una pared o barandilla para ganar
+            seguridad antes de intentar recorridos más largos.
+          </p>
+        </section>
+
+      </aside>
+
+    </main>
+
+    <!-- 
+      =========================================
+      PIE DE PÁGINA
+      =========================================
+
+      La etiqueta <footer> suele contener:
+      - datos de contacto
+      - enlaces secundarios
+      - derechos de autor
+      - información legal
+    -->
+    <footer id="contacto">
+
+      <div>
+        <h2>Monociclos Mayteh</h2>
+        <p>Especialistas en monociclos, formación y movilidad creativa.</p>
+      </div>
+
+      <div>
+        <h3>Secciones</h3>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#ventajas">Ventajas</a></li>
+          <li><a href="#academia">Academia</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Contacto</h3>
+        <p>Email: info@monociclosmayteh.es</p>
+        <p>Tel: 600 123 456</p>
+        <p>Ciudad: Sevilla</p>
+      </div>
+
+      <div>
+        <p>© 2026 Monociclos Mayteh. Todos los derechos reservados.</p>
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+</html>
