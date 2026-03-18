@@ -1,191 +1,224 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Longanizas Benancio</title>
 
-  <!-- Animate.css (librería de animaciones) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-  <!-- Tu CSS -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- SOLO tu CSS -->
+  <link rel="stylesheet" href="styles.css">
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <span class="logo" aria-hidden="true">🌭</span>
-      <div class="brand-text">
-        <h1 class="animate__animated animate__fadeInDown">Longanizas Benancio</h1>
-        <p class="animate__animated animate__fadeInUp animate__delay-1s">
-          Tradición, humo y alegría desde 1952.
-        </p>
-      </div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">🌭</span>
+
+    <div class="brand-text">
+      <h1 class="animate__animated animate__fadeInDown">Longanizas Benancio</h1>
+      <p class="animate__animated animate__fadeIn animate__delay-1s">Tradición, humo y alegría desde 1952.</p>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="#productos">Productos</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-left">
+    <h2 class="animate__animated animate__backInLeft">La longaniza que te pone una sonrisa</h2>
+
+    <p class="animate__animated animate__fadeInLeftBig animate__delay-1s">
+      Curadas al punto, con especias secretas y un toque “Benancio”.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary animate__animated animate__heartBeat animate__slower animate__infinite" href="#productos">Ver catálogo</a>
+      <a class="btn btn-ghost" href="#contacto">Pedir por WhatsApp</a>
     </div>
 
-    <nav class="nav">
-      <a href="#productos">Productos</a>
-      <a href="#proceso">Proceso</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>Envío 24/48h · Península</span>
+    </div>
+  </div>
+
+
+  <div class="hero-right">
+
+    <article class="hero-card">
+      <div class="hero-card-top">
+        <p class="tag">TOP VENTAS</p>
+        <h3>Pack Degustación</h3>
+        <p class="muted">4 sabores · 800g</p>
+      </div>
+
+      <div class="hero-card-price">
+        <span class="price">16,90€</span>
+        <span class="mini muted">IVA incl.</span>
+      </div>
+
+      <button class="btn btn-secondary">
+        Añadir al carrito
+      </button>
+
+      <div class="shine"></div>
+    </article>
+
+    <div class="floating-sausage">🌭</div>
+
+  </div>
+
+</section>
+
+
+<!-- CINTA -->
+<section class="marquee">
+  <div class="marquee-track">
+    <span>2x1 los viernes en “Dulce Picante”</span>
+    <span>Receta gratis con cada pedido</span>
+    <span>Nivel picante configurable</span>
+    <span>Envío 24/48h</span>
+    <span>4.9/5 en reseñas</span>
+
+    <!-- duplicado para animación futura -->
+    <span>2x1 los viernes en “Dulce Picante”</span>
+    <span>Receta gratis con cada pedido</span>
+    <span>Nivel picante configurable</span>
+    <span>Envío 24/48h</span>
+    <span>4.9/5 en reseñas</span>
+  </div>
+</section>
+
+
+<!-- PRODUCTOS -->
+<section id="productos" class="section">
+
+  <header class="section-head">
+    <h2>Productos</h2>
+    <p class="muted">
+      Tres clásicos… y ninguno dura en la nevera.
+    </p>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-left">
-        <h2 class="animate__animated animate__fadeInLeft">
-          La longaniza que pone una sonrisa
-        </h2>
-        <p class="animate__animated animate__fadeInLeft animate__delay-1s">
-          Curadas al punto, con especias secretas y un toque “Benancio”.
-        </p>
+  <div class="grid">
 
-        <div class="hero-actions">
-          <a class="btn btn-primary animate__animated animate__pulse animate__infinite" href="#productos">
-            Ver catálogo
-          </a>
-          <a class="btn btn-ghost" href="#contacto">Pedir por WhatsApp</a>
-        </div>
+    <article class="card animate__animated animate__jackInTheBox">
+      <h3>Clásica Ahumada</h3>
+      <p class="muted">Sabor intenso, curación lenta.</p>
 
-        <!-- Badge con animación propia -->
-        <div class="badge">
-          <span class="badge-dot"></span>
-          <span>Envío 24/48h · Península</span>
-        </div>
+      <div class="card-bottom">
+        <span class="price">7,90€</span>
+        <button class="btn btn-small">Comprar</button>
       </div>
+    </article>
 
-      <div class="hero-right">
-        <!-- “Tarjeta producto” con animación propia + shine -->
-        <article class="hero-card">
-          <div class="hero-card-top">
-            <p class="tag">TOP VENTAS</p>
-            <h3>Pack Degustación</h3>
-            <p class="muted">4 sabores · 800g</p>
-          </div>
 
-          <div class="hero-card-price">
-            <span class="price">16,90€</span>
-            <span class="mini muted">IVA incl.</span>
-          </div>
+    <article class="card animate__animated animate__jackInTheBox animate__delay-1s">
+      <h3>Dulce Picante</h3>
+      <p class="muted">El “pica pero no mata”</p>
 
-          <button class="btn btn-secondary">Añadir al carrito</button>
-
-          <!-- Brillito animado -->
-          <div class="shine" aria-hidden="true"></div>
-        </article>
-
-        <!-- Longaniza flotante (animación propia con keyframes) -->
-        <div class="floating-sausage" aria-hidden="true">🌭</div>
+      <div class="card-bottom">
+        <span class="price">8,40€</span>
+        <button class="btn btn-small">Comprar</button>
       </div>
-    </section>
+    </article>
 
-    <!-- CINTA / MARQUEE (animación con keyframes y %) -->
-    <section class="marquee" aria-label="Promociones">
-      <div class="marquee-track">
-        <span>2x1 los viernes en “Dulce Picante”</span>
-        <span>Receta gratis con cada pedido</span>
-        <span>Nivel picante configurable</span>
-        <span>Envío 24/48h</span>
-        <span>4.9/5 en reseñas</span>
 
-        <!-- duplicamos contenido para que el bucle sea suave -->
-        <span>2x1 los viernes en “Dulce Picante”</span>
-        <span>Receta gratis con cada pedido</span>
-        <span>Nivel picante configurable</span>
-        <span>Envío 24/48h</span>
-        <span>4.9/5 en reseñas</span>
+    <article class="card animate__animated animate__jackInTheBox animate__delay-2s">
+      <h3>Extra Pimienta</h3>
+      <p class="muted">Para valientes del molinillo.</p>
+
+      <div class="card-bottom">
+        <span class="price">8,10€</span>
+        <button class="btn btn-small">Comprar</button>
       </div>
-    </section>
+    </article>
 
-    <!-- PRODUCTOS -->
-    <section id="productos" class="section">
-      <header class="section-head">
-        <h2 class="animate__animated animate__fadeInUp">Productos</h2>
-        <p class="muted">Tres clásicos… y ninguno dura en la nevera.</p>
-      </header>
+  </div>
+</section>
 
-      <div class="grid">
-        <article class="card animate__animated animate__zoomIn">
-          <h3>Clásica Ahumada</h3>
-          <p class="muted">Sabor intenso, curación lenta.</p>
-          <div class="card-bottom">
-            <span class="price">7,90€</span>
-            <button class="btn btn-small">Comprar</button>
-          </div>
-        </article>
 
-        <article class="card animate__animated animate__zoomIn animate__delay-1s">
-          <h3>Dulce Picante</h3>
-          <p class="muted">El “pica pero no mata”</p>
-          <div class="card-bottom">
-            <span class="price">8,40€</span>
-            <button class="btn btn-small">Comprar</button>
-          </div>
-        </article>
 
-        <article class="card animate__animated animate__zoomIn animate__delay-2s">
-          <h3>Extra Pimienta</h3>
-          <p class="muted">Para valientes del molinillo.</p>
-          <div class="card-bottom">
-            <span class="price">8,10€</span>
-            <button class="btn btn-small">Comprar</button>
-          </div>
-        </article>
-      </div>
-    </section>
+<!-- PROCESO -->
+<section id="proceso" class="section process">
 
-    <!-- PROCESO -->
-    <section id="proceso" class="section process">
-      <header class="section-head">
-        <h2>Proceso artesano</h2>
-        <p class="muted">Una línea de tiempo con animación escalonada.</p>
-      </header>
+  <header class="section-head">
+    <h2>Proceso artesano</h2>
+    <p class="muted">
+      Así lo hasemos papá
+    </p>
+  </header>
 
-      <ol class="steps">
-        <li class="step">Selección de carne</li>
-        <li class="step">Mezcla de especias</li>
-        <li class="step">Embutido</li>
-        <li class="step">Curación</li>
-        <li class="step">Ahumado</li>
-      </ol>
-    </section>
+  <ol class="steps">
+    <li class="step">Selección de carne</li>
+    <li class="step">Mezcla de especias</li>
+    <li class="step">Embutido</li>
+    <li class="step">Curación</li>
+    <li class="step">Ahumado</li>
+  </ol>
 
-    <!-- CONTACTO -->
-    <section id="contacto" class="section contact">
-      <header class="section-head">
-        <h2>Contacto</h2>
-        <p class="muted">Te respondemos rápido (y con hambre).</p>
-      </header>
+</section>
 
-      <form class="form">
-        <label>
-          Nombre
-          <input type="text" placeholder="Benancio Jr." />
-        </label>
 
-        <label>
-          Email
-          <input type="email" placeholder="benancio@longanizas.com" />
-        </label>
 
-        <label>
-          Mensaje
-          <textarea rows="4" placeholder="Quiero 2 packs y una receta de fabada…"></textarea>
-        </label>
+<!-- CONTACTO -->
+<section id="contacto" class="section contact">
 
-        <button class="btn btn-primary">Enviar</button>
-      </form>
-    </section>
-  </main>
+  <header class="section-head">
+    <h2>Contacto</h2>
+    <p class="muted">Te respondemos rápido (y con hambre).</p>
+  </header>
 
-  <footer class="footer">
-    <p>© <span id="year"></span> Longanizas Benancio · Hecho con 🌭 y @keyframes</p>
-  </footer>
+  <form class="form">
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <label>
+      Nombre
+      <input type="text" placeholder="Benancio Jr.">
+    </label>
+
+    <label>
+      Email
+      <input type="email" placeholder="benancio@longanizas.com">
+    </label>
+
+    <label>
+      Mensaje
+      <textarea rows="4"
+        placeholder="Quiero 2 packs y una receta de fabada…"></textarea>
+    </label>
+
+    <button class="btn btn-primary">Enviar</button>
+
+  </form>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+  <p>© <span id="year"></span> Longanizas Benancio</p>
+</footer>
+
+<div class="capa-estrellita"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+<script src="script.js"></script>
+
+
 </body>
 </html>
